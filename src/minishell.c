@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/01 13:54:14 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/01 17:46:43 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,15 @@ int main ( int argc, char ** argv, char ** env )
     (void )argc;
     (void)argv;
     data_init(env);
-    if(!ft_lexer("yo | ok < ok"))
+    if(!ft_lexer("Echo -e \'salut a toi jeune entreprenuer !\' | wc > \"text.txt\" $VAR"))
         return (0);
-    if(!ft_parser())
-        return(0);
+    // if(!ft_parser())
+    //     return(0);
     t_lexer *tmp = global.head_lexer;
 
     while (tmp)
     {
-        if (tmp->token == IDENTIFIER)
-            printf("%s\n", tmp->identifier);
-        else
-            printf("%c\n", tmp->operator);
+        printf("%s\n", tmp->identifier);
         tmp = tmp->next;
     }
     freehead(global.head_lexer);

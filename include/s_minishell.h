@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_minishell.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/01 14:00:03 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/01 17:31:17 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ enum	e_token
     IDENTIFIER,
     OPERATOR,
 	CMD,
-	ARG
+	ARG,
 };
 
 enum	e_error
@@ -46,6 +46,7 @@ enum	e_error
     GLUED_OPERATOR,
 	DOUBLE_OPERATOR,
 	OPERATOR_IN_IDENTIFIER,
+	NO_END
 };
 
 
