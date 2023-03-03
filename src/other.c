@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/02 22:24:46 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:23:14 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,17 @@ void	freehead(t_lexer *head)
 			free(head->identifier);
 		free(head);
 		head = tmp;
+	}
+}
+
+void lowercase_str(char * str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		str[i] = ft_tolower(str[i]);
+		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/02 22:50:39 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:56:47 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ static int double_operator( void )
         else
             i = 0;
         if (i > 1)
+		{
+			global.error = tmp->identifier;
             return (0);
+		}
         tmp = tmp->next;
     }
     return (1);
@@ -70,7 +73,9 @@ static void parsing_cmd( void )
     {
 		if (tmp->token == IDENTIFIER)
 		{
-			if (!access(tmp->identifier, F_OK))
+			if (find_builtins(tmp))
+				continue ;
+			else if (!access(tmp->identifier, F_OK))
 				tmp->token = CMD;
 			else if (*global.env)
 			{

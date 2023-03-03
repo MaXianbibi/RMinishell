@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/02 22:52:27 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:59:53 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,21 @@ static void data_init( char **env )
 } 
 static int minishell( void )
 {
-    if(!ft_lexer("Echo | ok < ca sa 'slait a toi' /bin/ls ping"))
+    if(!ft_lexer("eChO ok < ca sa psdfjDSah 'slait a toi' /bin/ls ping"))
         return (0);
+	
     if(!ft_parser())
         return(0);
     t_lexer *tmp = global.head_lexer;
 
     while (tmp)
     {
-        printf("%s\n", tmp->identifier);
+		if (tmp->token != BUILTIN)
+		{
+        	printf("%s\n", tmp->identifier);
+		}
+		else
+			tmp->ptr(tmp);
         tmp = tmp->next;
     }
 	return (0);

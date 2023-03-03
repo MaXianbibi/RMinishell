@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:28:48 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/01 10:28:57 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/03 16:58:56 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,38 @@ char	*find(char **envp, char *cmd)
 	}
 	ft_free_chartable(path_env);
 	return (path_to_command);
+}
+
+static void ptr_builtin(t_lexer * cmd, int i)
+{
+	free(cmd->identifier);
+	if (i == ECHO)
+		cmd->ptr = &ft_echo;
+
+	cmd->token = BUILTIN;
+}
+
+int find_builtins(t_lexer * cmd)
+{
+	static char * list[10] = {"echo", "cd", "pwd", "export",
+								 "unset", "env", "exit"};
+	char * tmp;
+	int i;
+
+	i = 0;
+	tmp = strdup(cmd->identifier);
+	lowercase_str(tmp);	
+	
+	while (i < 7)
+	{
+		if (!ft_strncmp(tmp, list[i], 100))
+		{
+			ptr_builtin(cmd, i);
+			free(tmp);
+			return (1);
+		}
+		i++;
+	}
+	free(tmp);
+	return (0);
 }
