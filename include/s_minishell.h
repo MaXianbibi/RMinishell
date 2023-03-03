@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/01 17:31:17 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/02 22:53:04 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ struct s_global
 {
 	t_lexer *		head_lexer;
 	char ** 		env;
+	char *			error;
 };
 typedef struct s_global	t_global;
 
@@ -39,6 +40,7 @@ enum	e_token
     OPERATOR,
 	CMD,
 	ARG,
+	VAR
 };
 
 enum	e_error

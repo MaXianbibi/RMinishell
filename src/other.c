@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   other.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/02/28 22:49:43 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/02 22:24:46 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,14 @@ void	freehead(t_lexer *head)
 {
 	t_lexer	*tmp;
 
-	while (head != NULL)
+
+	tmp = NULL;
+	while (tmp != NULL)
 	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
+		tmp = head->next;
+		if (head->identifier)
+			free(head->identifier);
+		free(head);
+		head = tmp;
 	}
 }

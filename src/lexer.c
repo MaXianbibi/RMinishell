@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:51:50 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/01 17:52:40 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:33:25 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,7 @@ static int ft_split_lexer(const char * str)
 					return (print_error(NO_END));
 			}
 			else
-			{
 				tmp->identifier = ft_len_token(str + i, &i);
-			}
 		}
 	}
 	return (1);
@@ -94,9 +92,8 @@ int ft_lexer(const char * str)
         return (0);
 	if (!ft_split_lexer(str))
 		return (0);
-
 	tmp = global.head_lexer;
-	while (!tmp)
+	while (tmp)
 	{
 		if (ft_strchr(OPERATORS, tmp->identifier[0]))
 		{
@@ -105,10 +102,12 @@ int ft_lexer(const char * str)
 			tmp->token = OPERATOR;
 		}
 		else if (ft_strchr(VAR_OPERATORS, tmp->identifier[0]))
+			tmp->token = VAR;
+		else if (tmp->identifier[0] == '-')
+			tmp->token = ARG;
+		else
 			tmp->token = IDENTIFIER;
-		else if ()
+		tmp = tmp->next;
 	}
-	
-	
     return (1);
 }

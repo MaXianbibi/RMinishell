@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/01 17:46:43 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/02 22:52:27 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,12 @@ static void data_init( char **env )
     if (env)
         global.env = env;
 } 
-
-int main ( int argc, char ** argv, char ** env )
+static int minishell( void )
 {
-
-    (void )argc;
-    (void)argv;
-    data_init(env);
-    if(!ft_lexer("Echo -e \'salut a toi jeune entreprenuer !\' | wc > \"text.txt\" $VAR"))
+    if(!ft_lexer("Echo | ok < ca sa 'slait a toi' /bin/ls ping"))
         return (0);
-    // if(!ft_parser())
-    //     return(0);
+    if(!ft_parser())
+        return(0);
     t_lexer *tmp = global.head_lexer;
 
     while (tmp)
@@ -39,5 +34,16 @@ int main ( int argc, char ** argv, char ** env )
         printf("%s\n", tmp->identifier);
         tmp = tmp->next;
     }
+	return (0);
+	
+}
+
+int main ( int argc, char ** argv, char ** env )
+{
+
+    (void )argc;
+    (void)argv;
+    data_init(env);
+	minishell();
     freehead(global.head_lexer);
 }
