@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:51:50 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 15:06:07 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 17:18:58 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ int ft_lexer(const char * str)
 		}
 		else if (tmp->identifier[0] == '$')
 			tmp->token = VAR;
-		else if (tmp->identifier[0] == '-')
-			tmp->token = ARG;
 		else
 			tmp->token = IDENTIFIER;
 		tmp = tmp->next;

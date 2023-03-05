@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/05 14:47:18 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 17:07:40 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static int ft_execve( char * path_to_cmd, char ** arg)
 	id = fork();
 	if (id == -1)
 	{
-		perror("ERROR : ");
+		perror("ERROR");
 		return (0);
 	}
 	if (id == 0)
 	{
 		if (execve(path_to_cmd, arg, global.env) == -1)
 		{
-			perror("ERROR : ");
+			perror("ERROR");
 			exit (1);
 		}
 		exit (0);
@@ -90,6 +90,8 @@ int ft_execute( void )
 	{
 		if (tmp->token == CMD)
 			tmp = ft_execute_cmd(tmp);
+		else if (tmp->token == BUILTIN)
+			tmp = tmp->ptr(tmp);
 		else
 			tmp = tmp->next;
 	}

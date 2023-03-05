@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 16:21:04 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:08:32 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_global global;
 static void data_init( char **env )
 {
     ft_memset(&global, 0, sizeof(global));
-
     if (env)
         global.env = env;
 } 
@@ -47,11 +46,11 @@ static int minishell( void )
     // }
 	
 	// return (0);
-	
 }
 
 int main ( int argc, char ** argv, char ** env )
 {
+	printf("MINISHELL : \n");
     (void )argc;
     (void)argv;
     	data_init(env);

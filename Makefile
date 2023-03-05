@@ -7,14 +7,45 @@ RM = @rm -f
 INCLUDE = -I include/ -I lib/
 
 SRC_DIR = src/
-SRC_FILES =	minishell.c lexer.c other.c parser.c error.c find_cmd.c echo.c execute.c
+SRC_FILES = $(wildcard $(SRC_DIR)*.c)
+
+BUILTINS_DIR = src/builtins/
+BUILTINS_FILES = $(wildcard $(BUILTINS_DIR)*.c)
+
+ERROR_DIR = src/error/
+ERROR_FILES = $(wildcard $(ERROR_DIR)*.c)
+
+EXECUTE_DIR = src/execute/
+EXECUTE_FILES = $(wildcard $(EXECUTE_DIR)*.c)
+
+PARSING_DIR = src/parsing/
+PARSING_FILES = $(wildcard $(PARSING_DIR)*.c)
 
 OBJ_DIR = objs/
-OBJS = ${addprefix ${OBJ_DIR}, $(SRC_FILES:.c=.o)}
+OBJS = $(addprefix $(OBJ_DIR), $(notdir $(SRC_FILES:.c=.o) $(notdir $(BUILTINS_FILES:.c=.o)) $(notdir $(ERROR_FILES:.c=.o)) $(notdir $(EXECUTE_FILES:.c=.o)) $(notdir $(PARSING_FILES:.c=.o))))
 
-${OBJ_DIR}%.o: ${SRC_DIR}%.c
-	@echo "$(_BLUE)$(_BOLD)Compilation Printf: $< $(_END)"
+
+${OBJ_DIR}%.o: $(BUILTINS_DIR)%.c
+	@echo "$(_YELLOW)$(_BOLD)Compilation BUILTINS: $< $(_END)"
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+${OBJ_DIR}%.o: $(SRC_DIR)%.c 
+	@echo "$(_GREEN)$(_BOLD)Compilation MAIN: $< $(_END)"
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+${OBJ_DIR}%.o: $(ERROR_DIR)%.c 
+	@echo "$(_RED)$(_BOLD)Compilation ERROR_FILES: $< $(_END)"
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+${OBJ_DIR}%.o: $(EXECUTE_DIR)%.c 
+	@echo "$(_PURPLE)$(_BOLD)Compilation EXECUTE_FILES: $< $(_END)"
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+${OBJ_DIR}%.o: $(PARSING_DIR)%.c 
+	@echo "$(_BLUE)$(_BOLD)Compilation PARSING_FILES: $< $(_END)"
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+
 
 #Couleurs!
 _END=$'\x1b[0m
@@ -53,3 +84,5 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 16:21:19 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 16:59:04 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void freehead(t_lexer *head)
 	while (tmp)
 	{
 		head = head->next;
-		if (tmp->identifier)
+		if (tmp->identifier && tmp->token != BUILTIN)
 		{
 			free(tmp->identifier);
 			tmp->identifier = NULL;
