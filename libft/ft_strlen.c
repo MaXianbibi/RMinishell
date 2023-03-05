@@ -6,11 +6,11 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 16:54:00 by jmorneau          #+#    #+#             */
-/*   Updated: 2022/10/03 14:07:25 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:39:21 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	int	i;
 

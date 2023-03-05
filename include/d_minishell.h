@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:47:16 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/02 17:22:10 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:41:03 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define D_MINISHELL_H
 
 #include <stdio.h>
+
+# define SUCCESS 1
+# define FAIL 0
 
 #define OPERATORS "|&;<>()`\\*?[#˜=%"
 

@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/03 16:45:12 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:55:34 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ int			find_builtins(t_lexer * cmd);
 
 int			ft_echo( t_lexer * tmp);
 
+
+// EXEC
+int ft_execute( void );
 
 #endif
