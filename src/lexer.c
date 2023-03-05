@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:51:50 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/03 16:52:41 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 15:06:07 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static int ft_split_lexer(const char * str)
 				tmp->identifier = ft_word(str + i, &i);	
 				if (!tmp->identifier)
 					return (print_error(NO_END));
+				tmp->token = ARG;
 			}
 			else
 				tmp->identifier = ft_len_token(str + i, &i);
@@ -98,10 +99,10 @@ int ft_lexer(const char * str)
 		if (ft_strchr(OPERATORS, tmp->identifier[0]))
 		{
 			if (tmp->identifier[1])
-				return (print_error(GLUED_OPERATOR));
+				return (print_error(GLUED_OPERATOR)); // a changer
 			tmp->token = OPERATOR;
 		}
-		else if (ft_strchr(VAR_OPERATORS, tmp->identifier[0]))
+		else if (tmp->identifier[0] == '$')
 			tmp->token = VAR;
 		else if (tmp->identifier[0] == '-')
 			tmp->token = ARG;

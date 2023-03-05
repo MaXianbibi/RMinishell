@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/04 20:50:45 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 14:47:18 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static t_lexer * ft_execute_cmd( t_lexer * tmp)
 	{
 		arg[i] = tmp->identifier;
 		tmp = tmp->next;	
+		i++;
 	}
 	ft_execve(path_to_cmd, arg);	
 

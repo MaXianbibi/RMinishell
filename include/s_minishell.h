@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/05 14:10:17 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 16:18:04 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ typedef struct s_lexer t_lexer;
 
 struct s_global
 {
-	t_lexer *			head_lexer;
-	char ** 			env;
+	t_lexer 	*		head_lexer;
+	char 		** 		env;
 	char 		*		error;
+	char		*		cmd;
 };
 typedef struct s_global	t_global;
 
@@ -48,7 +49,8 @@ enum	e_error
     GLUED_OPERATOR,
 	DOUBLE_OPERATOR,
 	OPERATOR_IN_IDENTIFIER,
-	NO_END
+	NO_END,
+	CMD_NOT_FOUND
 };
 
 enum	e_builtins

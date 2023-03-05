@@ -6,27 +6,29 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/03 16:23:14 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 16:21:19 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-t_lexer	*creat_new_node()
+extern t_global global;
+
+t_lexer *creat_new_node()
 {
-	t_lexer	*result;
+	t_lexer *result;
 
 	result = malloc(sizeof(t_lexer));
-    ft_memset(result, 0, sizeof(t_lexer));
+	ft_memset(result, 0, sizeof(t_lexer));
 	if (result == NULL)
 		return (NULL);
 	result->next = NULL;
 	return (result);
 }
 
-void	insert_at_head(t_lexer **head, t_lexer *node_to_insert)
+void insert_at_head(t_lexer **head, t_lexer *node_to_insert)
 {
-	t_lexer	*tmp;
+	t_lexer *tmp;
 
 	tmp = *head;
 	if (!*head)
@@ -39,23 +41,33 @@ void	insert_at_head(t_lexer **head, t_lexer *node_to_insert)
 	}
 }
 
-void	freehead(t_lexer *head)
+void freehead(t_lexer *head)
 {
-	t_lexer	*tmp;
+	t_lexer *tmp;
 
-
-	tmp = NULL;
-	while (tmp != NULL)
+	tmp = head;
+	while (tmp)
 	{
-		tmp = head->next;
-		if (head->identifier)
-			free(head->identifier);
-		free(head);
-		head = tmp;
+		head = head->next;
+		if (tmp->identifier)
+		{
+			free(tmp->identifier);
+			tmp->identifier = NULL;
+		}
+		if (tmp)
+		{
+			free(tmp);
+			tmp = NULL;
+		}
+		tmp = head;
 	}
+	if (global.cmd)
+		free(global.cmd);
+	global.cmd = NULL;
+	global.head_lexer = NULL;
 }
 
-void lowercase_str(char * str)
+void lowercase_str(char *str)
 {
 	int i;
 

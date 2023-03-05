@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:02:29 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/02 17:16:04 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 15:40:20 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int print_error(int code_error)
         printf("ERROR : %s\n", M_OPERATOR_IN_IDENTIFIER);
 	else if (code_error == NO_END)
 		printf("ERROR : %s\n", M_NO_END);
+	else if (code_error == CMD_NOT_FOUND)
+		printf("ERROR : %s\n", M_CMD_NOT_FOUND);
 	if (global.error)
 		printf("\t%s%s\n", URED, global.error);
 	printf("%s", RESET);
