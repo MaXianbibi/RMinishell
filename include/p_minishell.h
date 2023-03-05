@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/05 13:49:17 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:18:11 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void		lowercase_str(char * str);
 int			find_builtins(t_lexer * cmd);
 
 t_lexer *	ft_echo( t_lexer * tmp);
+
 
 
 // EXEC
