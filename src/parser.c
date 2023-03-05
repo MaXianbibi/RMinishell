@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/04 20:49:27 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 14:14:04 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ static int double_operator( void )
     t_lexer * tmp;
     int i;
 
-    i = 1;
     tmp = global.head_lexer;
+
+    i = 1;
+	if (tmp->token == OPERATOR && (tmp->identifier[0] == '<' || tmp->identifier[0] == '>'))
+		i = 0;
     while (tmp)
     {
         if (tmp->token == OPERATOR)

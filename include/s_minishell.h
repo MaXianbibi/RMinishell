@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/03 16:41:45 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 14:10:17 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ struct s_lexer
 	struct s_lexer	*next;
 	union 
 	{
-		char			*identifier;
-		int 			(*ptr)();
+		char				*identifier;
+		struct s_lexer 		* (*ptr)(struct s_lexer * );
 	};
 	int				token;
 };
