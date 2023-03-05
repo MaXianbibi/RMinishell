@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/03 16:56:47 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/04 20:49:27 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void parsing_cmd( void )
 		{
 			if (find_builtins(tmp))
 				continue ;
-			else if (!access(tmp->identifier, F_OK))
+			else if (!access(tmp->identifier, X_OK))
 				tmp->token = CMD;
 			else if (*global.env)
 			{
