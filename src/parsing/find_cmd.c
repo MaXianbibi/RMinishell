@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:28:48 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/03 16:58:56 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 22:03:28 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ static void ptr_builtin(t_lexer * cmd, int i)
 	free(cmd->identifier);
 	if (i == ECHO)
 		cmd->ptr = &ft_echo;
+	else if (i == EXIT)
+		cmd->ptr = &ft_exit;
+	else if (i == PWD)
+		cmd->ptr = &ft_pwd;
 
 	cmd->token = BUILTIN;
 }

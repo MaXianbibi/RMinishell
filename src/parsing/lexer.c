@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:51:50 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 17:18:58 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 21:38:22 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
 extern t_global global;
+
 
 int ft_search_c(const char * str, int c)
 {
@@ -85,10 +86,8 @@ static int ft_split_lexer(const char * str)
 
 int ft_lexer(const char * str)
 {
-    int i;
     t_lexer *tmp;
 
-    i = 0;
     if (!str)
         return (0);
 	if (!ft_split_lexer(str))

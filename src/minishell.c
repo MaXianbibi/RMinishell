@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 18:08:32 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 22:40:37 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,22 @@
 
 t_global global;
 
+static void init_list_env( void )
+{
+	global.head_env = (t_env *)creat_new_node();
+
+	*(global.head_env + 8) = 1;
+
+	printf("%s %p\n",global.head_env->str, global.head_env->next );
+}
+
 static void data_init( char **env )
 {
+	
     ft_memset(&global, 0, sizeof(global));
     if (env)
         global.env = env;
+	init_list_env();
 } 
 static int minishell( void )
 {
@@ -32,20 +43,6 @@ static int minishell( void )
 	if(!ft_execute())
 		return (0);
 	return (0);
-    // t_lexer *tmp = global.head_lexer;
-
-    // while (tmp)
-    // {
-	// 	if (tmp->token != BUILTIN)
-	// 	{
-    //     	printf("%s %d\n", tmp->identifier, tmp->token);
-	// 	}
-	// 	else
-	// 		tmp->ptr(tmp);
-    //     tmp = tmp->next;
-    // }
-	
-	// return (0);
 }
 
 int main ( int argc, char ** argv, char ** env )
@@ -57,6 +54,6 @@ int main ( int argc, char ** argv, char ** env )
 	while (1)
 	{
 		minishell();
-    	freehead(global.head_lexer);
+    	freehead();
 	}
 }

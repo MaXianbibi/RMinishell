@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   other.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 18:13:38 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 21:42:55 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
 extern t_global global;
 
@@ -41,10 +41,12 @@ void insert_at_head(t_lexer **head, t_lexer *node_to_insert)
 	}
 }
 
-void freehead(t_lexer *head)
+void freehead()
 {
 	t_lexer *tmp;
+	t_lexer *head;
 
+	head = global.head_lexer;
 	tmp = head;
 	while (tmp)
 	{

@@ -3,11 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 14:28:48 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/05 14:28:50 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/05 21:38:45 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-	
+#include "../../include/minishell.h"
