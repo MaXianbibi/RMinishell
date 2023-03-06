@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*   ft_find_index.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 21:56:20 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 18:04:48 by justinmorne      ###   ########.fr       */
+/*   Created: 2023/03/06 17:53:32 by justinmorne       #+#    #+#             */
+/*   Updated: 2023/03/06 17:54:53 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-
-extern t_global global;
-
-t_lexer *ft_unset(t_lexer *tmp)
+int ft_find_index( const char * str, char c)
 {
-    
-    (void)tmp;
-    return (NULL);
+    int i;
+
+    i = 0; 
+    while (str[i])
+    {
+        if (str[i] == c)
+            return (i);
+        i++;
+    }
+    return (0);
 }

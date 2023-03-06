@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 15:50:08 by jmorneau          #+#    #+#             */
-/*   Updated: 2022/10/18 23:50:58 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:56:18 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strrchr(const char *s, int c);
 void	ft_free_chartable(char **table);
 int		ft_chartable_linecount(char **table);
+int		ft_find_index( const char * str, char c);
 
 // printf
 int		ft_printf(const char *fmt, ...);

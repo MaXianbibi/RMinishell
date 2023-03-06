@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 00:23:35 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 16:57:22 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ int main ( int argc, char ** argv, char ** env )
 		minishell();
     	freehead();
 	}
+	// free env
 }
