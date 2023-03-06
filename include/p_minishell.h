@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/05 22:02:35 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/05 23:36:03 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int ft_execute( void );
 t_lexer *	ft_echo( t_lexer * tmp);
 t_lexer     *ft_exit(t_lexer *tmp);
 t_lexer *   ft_pwd( t_lexer * tmp);
+t_lexer *   ft_env( t_lexer * tmp );
 
 #endif

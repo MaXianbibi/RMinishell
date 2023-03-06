@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/05 22:15:29 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 00:17:21 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_lexer t_lexer;
 struct s_env
 {
 	struct s_env	*next;
-	const char 		*str;
+	const char 		*str;	
 };
 typedef struct s_env t_env;
 

@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:51:50 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 21:38:22 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/05 23:54:20 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int ft_lexer(const char * str)
     if (!str)
         return (0);
 	if (!ft_split_lexer(str))
+		return (0);
+	if (!global.head_lexer)
 		return (0);
 	tmp = global.head_lexer;
 	while (tmp)
