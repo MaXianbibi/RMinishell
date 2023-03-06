@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/05 23:36:03 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 15:43:58 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "s_minishell.h"
 
-int        ft_lexer(const char * str);
+int         ft_lexer(const char * str);
 void	    insert_at_head(t_lexer **head, t_lexer *node_to_insert);
 t_lexer	    *creat_new_node();
 void        freehead();
@@ -32,8 +32,11 @@ int ft_execute( void );
 // BUILTS IN
 
 t_lexer *	ft_echo( t_lexer * tmp);
-t_lexer     *ft_exit(t_lexer *tmp);
+t_lexer *   ft_exit(t_lexer *tmp);
 t_lexer *   ft_pwd( t_lexer * tmp);
 t_lexer *   ft_env( t_lexer * tmp );
+t_lexer *   ft_cd(t_lexer *tmp);
+t_lexer *   ft_export( t_lexer * tmp );
+t_lexer *   ft_unset(t_lexer *tmp);
 
 #endif

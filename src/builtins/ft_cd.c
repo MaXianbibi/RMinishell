@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 21:56:20 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 15:43:15 by justinmorne      ###   ########.fr       */
+/*   Created: 2023/03/06 14:44:38 by justinmorne       #+#    #+#             */
+/*   Updated: 2023/03/06 14:58:32 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-extern t_global global;
-
-t_lexer *ft_export(t_lexer *tmp)
+t_lexer *ft_cd(t_lexer *tmp)
 {
-    
-    
+    int ret;
+    const char * home;
+
+    home = getenv("HOME");
+    tmp = tmp->next;
+    if (tmp)
+        ret = chdir(tmp->identifier);
+    else
+        ret = chdir(home);
+    if (ret)
+        perror("ERROR");
+    return (tmp);
 }

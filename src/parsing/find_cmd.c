@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:28:48 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 23:37:29 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 15:06:19 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ static void ptr_builtin(t_lexer * cmd, int i)
 		cmd->ptr = &ft_pwd;
 	else if (i == ENV)
 		cmd->ptr = &ft_env;
+	else if (i == CD)
+		cmd->ptr = &ft_cd;
+	else if (i == EXPORT)
+		cmd->ptr = &ft_export;
 
 	cmd->token = BUILTIN;
 }
