@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/06 18:47:20 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 20:29:32 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,5 @@ int ft_execute( void )
 		else
 			tmp = tmp->next;
 	}
-
 	return (1);
 }

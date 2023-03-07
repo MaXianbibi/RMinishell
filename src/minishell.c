@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 19:28:14 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 20:33:25 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ static void init_list_env( void )
 
 static void data_init( char **env )
 {
-	
     ft_memset(&global, 0, sizeof(global));
     if (env)
         global.env = env;
 	init_list_env();
-} 
+}
+
 static int minishell( void )
 {
-
 	global.cmd  = readline("> ");
     if(!ft_lexer(global.cmd))
         return (0);
@@ -72,3 +71,8 @@ int main ( int argc, char ** argv, char ** env )
 	}
 	// free env
 }
+
+
+// pour regler le probleme de ks="sad a ad a"
+
+// dans le lexer, si jamais tu trouve ' ou " tu appelle la fonction definie pour ces dernières.
