@@ -45,8 +45,6 @@ ${OBJ_DIR}%.o: $(PARSING_DIR)%.c
 	@echo "$(_BLUE)$(_BOLD)Compilation PARSING_FILES: $< $(_END)"
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-
-
 #Couleurs!
 _END=$'\x1b[0m
 _BOLD=$'\x1b[1m

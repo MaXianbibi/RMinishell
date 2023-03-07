@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:47:16 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/06 15:19:05 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 18:57:32 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 
 # define M_GLUED_OPERATOR "Syntax Error ! : 2 OPERATEUR A LA SUITE :"
 # define M_DOUBLE_OPERATOR "parse error near : "
-# define M_OPERATOR_IN_IDENTIFIER "no matches found :"
+# define M_OPERATOR_IN_IDENTIFIER "no matches found : "
 # define M_NO_END "Syntax Error (code 4) !" // jsp pour linstant
 # define M_CMD_NOT_FOUND "command not found : "
+# define M_NOT_ENOUGH_ARG "Not enough arguments : "
 
 #endif

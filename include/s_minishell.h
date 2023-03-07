@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/06 18:32:03 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 18:53:45 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ enum	e_error
 	DOUBLE_OPERATOR,
 	OPERATOR_IN_IDENTIFIER,
 	NO_END,
-	CMD_NOT_FOUND
+	CMD_NOT_FOUND,
+	NOT_ENOUGH_ARG
 };
 
 enum	e_builtins

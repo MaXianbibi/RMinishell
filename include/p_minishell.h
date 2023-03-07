@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/06 15:43:58 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 19:17:01 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int         print_error(int code_error);
 char		*find(char **envp, char *cmd);
 void		lowercase_str(char * str);
 int			find_builtins(t_lexer * cmd);
+t_env *     check_list( const char * str );
+
 
 // EXEC
 

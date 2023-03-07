@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 16:57:22 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 19:28:14 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void init_list_env( void )
 			tmp->str = ft_strdup(global.env[i]);
 		}
 		else
-			tmp->str = global.env[i];
+			tmp->str = ft_strdup(global.env[i]);
 		i++;
 	}
 }

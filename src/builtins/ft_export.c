@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:55:13 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 18:45:56 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/06 20:23:27 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static char *parsing_export(const char *str) // il faut plus de truc a verif.. j
     return (tmp);
 }
 
-t_env * check_list( const char * str )
+t_env *check_list(const char *str)
 {
-    t_env * tmp;
+    t_env *tmp;
     char cstr[1024];
     int i;
 
@@ -44,7 +44,7 @@ t_env * check_list( const char * str )
     tmp = global.head_env;
     while (tmp)
     {
-        if(!ft_strncmp(cstr, tmp->str, i))
+        if (!ft_strncmp(cstr, tmp->str, i))
             return (tmp);
         tmp = tmp->next;
     }
@@ -60,25 +60,30 @@ t_lexer *ft_export(t_lexer *tmp)
     else
     {
         tmp = tmp->next;
-        env = check_list(tmp->identifier);
-        if (!env)
+        while (tmp)
         {
-            env = (t_env *)creat_new_node();
-            env->str = parsing_export(tmp->identifier);
-            insert_at_head((t_lexer **)&global.head_env, (t_lexer *)env);
-        }
-        else
-        {
-            if (ft_find_index(tmp->identifier, '=') == (ft_strlen(tmp->identifier) - 1) || ft_find_index(tmp->identifier, '=') == 0) // pas opti mais belek
-                return (tmp);
-            free(env->str);
-            env->str = strdup(tmp->identifier);
+
+            env = check_list(tmp->identifier);
+            if (!env)
+            {
+                env = (t_env *)creat_new_node();
+                env->str = parsing_export(tmp->identifier);
+                insert_at_head((t_lexer **)&global.head_env, (t_lexer *)env);
+            }
+            else
+            {
+                if (ft_find_index(tmp->identifier, '=') == (ft_strlen(tmp->identifier) - 1) || ft_find_index(tmp->identifier, '=') == 0) // pas opti mais belek
+                    return (tmp);
+                free(env->str);
+                env->str = strdup(tmp->identifier);
+            }
+            tmp = tmp->next;
         }
     }
     return (tmp);
 }
 
-// bug : 
+// bug :
 
 // regler les ""
 // regler les $
