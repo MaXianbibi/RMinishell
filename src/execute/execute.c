@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/06 20:29:32 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/07 17:38:55 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static char * ft_trim(char * str)
 static int ft_execve( char * path_to_cmd, char ** arg)
 {
 	pid_t	id;
+	char	**child_env;
 
 	id = fork();
 	if (id == -1)
@@ -46,7 +47,8 @@ static int ft_execve( char * path_to_cmd, char ** arg)
 	}
 	if (id == 0)
 	{
-		if (execve(path_to_cmd, arg, global.env) == -1)
+		child_env = convert_env();
+		if (execve(path_to_cmd, arg, child_env) == -1)
 		{
 			perror("ERROR");
 			exit (1);

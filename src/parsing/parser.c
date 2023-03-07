@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 21:38:57 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/07 18:03:11 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,10 @@ int ft_parser(void)
 		return (print_error(DOUBLE_OPERATOR));
 	if (!identifier_parsing())
 		return (print_error(OPERATOR_IN_IDENTIFIER));
+	ft_parse_quotes();
 	parsing_cmd(); // remplace les caractères originel par les cmd (si trouvé)
 	if (!ft_parse_token())
 		return (print_error(CMD_NOT_FOUND));
 		
-	
 	return (1);
 }

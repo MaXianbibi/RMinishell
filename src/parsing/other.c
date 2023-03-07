@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   other.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 21:42:55 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/07 17:39:25 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,37 @@ void lowercase_str(char *str)
 		str[i] = ft_tolower(str[i]);
 		i++;
 	}
+}
+
+int size_of_chained( t_env * tmp)
+{
+	int i;
+
+	i = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;	
+	}
+	return (i);
+}
+
+char ** convert_env( void )
+{
+	char ** env;
+	t_env * tmp;
+	int size;
+
+	tmp = global.head_env;
+	size = size_of_chained(global.head_env);
+	env = ft_calloc(sizeof( char * ), size);
+
+	size = 0;
+	while (tmp)
+	{
+		env[size] = tmp->str;
+		tmp = tmp->next;
+		size++;
+	}
+	return (env);
 }

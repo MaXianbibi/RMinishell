@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_minishell.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/06 18:53:45 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/07 17:41:18 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_lexer t_lexer;
 struct s_env
 {
 	struct s_env	*next;
-	char 		*str;	
+	char 			*str;	
 };
 typedef struct s_env t_env;
 

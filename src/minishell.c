@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 20:33:25 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/07 17:42:12 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,8 @@ static void init_list_env( void )
 		tmp = (t_env *)creat_new_node();
 		insert_at_head((t_lexer **)&global.head_env, (t_lexer *)tmp);
 		if (ft_strnstr(global.env[i], "SHLVL=", 6))
-		{
 			global.env[i][6] = ft_atoi(global.env[i] + 6) + 1 + '0'; // peut prendre jusqua 9 max / a voir si je gère
-			tmp->str = ft_strdup(global.env[i]);
-		}
-		else
-			tmp->str = ft_strdup(global.env[i]);
+		tmp->str = ft_strdup(global.env[i]);
 		i++;
 	}
 }
@@ -69,7 +65,7 @@ int main ( int argc, char ** argv, char ** env )
 		minishell();
     	freehead();
 	}
-	// free env
+	// free env + child
 }
 
 

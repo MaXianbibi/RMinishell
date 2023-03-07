@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_minishell.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/06 19:17:01 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/07 18:06:25 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char		*find(char **envp, char *cmd);
 void		lowercase_str(char * str);
 int			find_builtins(t_lexer * cmd);
 t_env *     check_list( const char * str );
+char 	** 	convert_env( void );
+int 		ft_parse_quotes ( void );
 
 
 // EXEC
@@ -37,7 +39,7 @@ t_lexer *	ft_echo( t_lexer * tmp);
 t_lexer *   ft_exit(t_lexer *tmp);
 t_lexer *   ft_pwd( t_lexer * tmp);
 t_lexer *   ft_env( t_lexer * tmp );
-t_lexer *   ft_cd(t_lexer *tmp);
+t_lexer   * ft_cd(t_lexer *tmp);
 t_lexer *   ft_export( t_lexer * tmp );
 t_lexer *   ft_unset(t_lexer *tmp);
 

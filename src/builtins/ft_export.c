@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:55:13 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 20:23:27 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/07 17:56:10 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,13 @@ t_lexer *ft_export(t_lexer *tmp)
 {
     t_env *env;
 
-    if (!tmp->next)
+    if (!tmp->next || tmp->next->token == OPERATOR)
         tmp = ft_env(tmp);
     else
     {
         tmp = tmp->next;
-        while (tmp)
+        while (tmp && tmp->token != OPERATOR)
         {
-
             env = check_list(tmp->identifier);
             if (!env)
             {
