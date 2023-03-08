@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/07 17:38:55 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:00:32 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int ft_execve( char * path_to_cmd, char ** arg)
 	pid_t	id;
 	char	**child_env;
 
+	child_env = convert_env();
 	id = fork();
 	if (id == -1)
 	{
@@ -47,15 +48,15 @@ static int ft_execve( char * path_to_cmd, char ** arg)
 	}
 	if (id == 0)
 	{
-		child_env = convert_env();
 		if (execve(path_to_cmd, arg, child_env) == -1)
 		{
 			perror("ERROR");
 			exit (1);
 		}
 		exit (0);
-	}
+	}	
 	waitpid(id, NULL, 0);
+	ft_free_chartable(child_env); // ?
 	return (0);
 }
 
@@ -64,6 +65,7 @@ static t_lexer * ft_execute_cmd( t_lexer * tmp)
 	char *	arg[50];
 	char *	path_to_cmd;
 	int i;
+
 
 	i = 1;
 	ft_memset(arg, 0, sizeof(arg));
@@ -76,8 +78,8 @@ static t_lexer * ft_execute_cmd( t_lexer * tmp)
 		tmp = tmp->next;	
 		i++;
 	}
-	ft_execve(path_to_cmd, arg);	
-
+	if (arg[0][0])
+		ft_execve(path_to_cmd, arg);
 	return (tmp);
 }
 

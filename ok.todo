@@ -1,0 +1,45 @@
+% todo
+
+!! gerer les '<'
+	? appliquer plusieurs '<' a la fois, < text.txt < ok.txt cat
+		- je ne pense pas que sa soit obligatoire ;
+
+!! gerer les pipes
+	- ??
+	- ouvrir avant l'execution
+	- gerer wc|ls
+	? gerer les pipes (ouvert) a la fin
+
+!! builtsin
+
+! "'USER'"
+	- "" == interprète les $ 
+	- '' == non
+
+! les double OPERATEUR ne marche pas sauf pour '<<' et '>>'
+
+! gerer les " " et ' ' et $
+	- regler le probleme de ks="sad a ad a"
+
+! gerer le ?
+
+! free env + cpy de env pour child
+
+! faut que je repense le systeme des ""
+	- a="asdasd asdas "
+	- peut être a -> = -> "asdads"
+	- '=' devient un OPERATEUR ?
+
+! refaire bien la fonction double quotes 
+
+! regler le probleme des commande 
+
+! mettre les export avant _=/usr/bin/env for some raison ....
+
+? pk les . et .. sont permission denied ? louche
+
+? lhistorique ne marche pas quand la commande est mauvaise :(
+
+~ changer les wildcards du makefile
+
+

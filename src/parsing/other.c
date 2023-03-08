@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/07 17:39:25 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:49:28 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char ** convert_env( void )
 	size = 0;
 	while (tmp)
 	{
-		env[size] = tmp->str;
+		env[size] = ft_strdup(tmp->str);
 		tmp = tmp->next;
 		size++;
 	}

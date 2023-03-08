@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/07 18:06:25 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:49:59 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int			find_builtins(t_lexer * cmd);
 t_env *     check_list( const char * str );
 char 	** 	convert_env( void );
 int 		ft_parse_quotes ( void );
+int ft_search_c(const char * str, int c);
 
 
 // EXEC

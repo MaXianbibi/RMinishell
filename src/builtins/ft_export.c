@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:55:13 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/07 17:56:10 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:11:44 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_env *check_list(const char *str)
     char cstr[1024];
     int i;
 
+	if (!str || !str[0])
+		return (NULL);
     ft_memset(cstr, 0, 1024);
     i = ft_find_index(str, '=');
     if (i)
