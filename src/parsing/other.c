@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/07 20:49:28 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:50:55 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char ** convert_env( void )
 
 	tmp = global.head_env;
 	size = size_of_chained(global.head_env);
-	env = ft_calloc(sizeof( char * ), size);
+	env = ft_calloc(sizeof( char * ), size + 1);
 
 	size = 0;
 	while (tmp)

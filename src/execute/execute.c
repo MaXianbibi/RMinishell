@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/07 21:00:32 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:44:19 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int ft_execve( char * path_to_cmd, char ** arg)
 	{
 		if (execve(path_to_cmd, arg, child_env) == -1)
 		{
-			perror("ERROR");
+			perror("ERROR :");
 			exit (1);
 		}
 		exit (0);

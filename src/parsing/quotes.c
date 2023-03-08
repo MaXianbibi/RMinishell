@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:48:28 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/07 20:40:28 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:56:20 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static char *ft_strldup(const char *str, int n)
 
 	return (tmp);
 }
+
+static char * 
 
 static char * add_space (char * str)
 {
@@ -57,9 +59,9 @@ char *multiple_join(char **split)
 			free(str);
 			str = NULL;
 		}
-		if (split[i + 1])
-			tmp = add_space(tmp);		
 		str = ft_strjoin(tmp, split[i]);
+		if (split[i + 1])
+			str = add_space(str);		
 		if (tmp)
 		{
 			free(tmp);
@@ -80,7 +82,9 @@ int ft_parse_quotes(void)
 	char *var;
 	char **split_var;
 	int i;
+	int isin;
 
+	isin = 0;
 	i = 0;
 	tmp = global.head_lexer;
 	tmp_env = NULL;
@@ -110,9 +114,13 @@ int ft_parse_quotes(void)
 					free(var);
 					while (split_var[i])
 					{
+						if (split_var[i][0] == '\'' && ft_strchr(split_var[i], '$'))
+						{
+							printf("yo\n");
+						}
 						if (ft_strchr(split_var[i], '$'))
 						{
-							if (split_var[i][0] == '$')
+							if (split_var[i][0] == '$' || split_var[i][0] == '\'')
 							{
 								if (split_var[i][1])
 								{
@@ -132,6 +140,12 @@ int ft_parse_quotes(void)
 					var = multiple_join(split_var);
 					ft_free_chartable(split_var);
 				}
+				tmp->identifier = var;
+			}
+			else if (tmp->identifier[0] == '\'')
+			{
+				var = ft_strldup(tmp->identifier + 1, ft_strlen(tmp->identifier) - 1);
+				free(tmp->identifier);
 				tmp->identifier = var;
 			}
 			tmp->token = IDENTIFIER;

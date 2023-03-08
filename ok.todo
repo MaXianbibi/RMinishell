@@ -21,7 +21,6 @@
 ! gerer les " " et ' ' et $
 	- regler le probleme de ks="sad a ad a"
 
-! gerer le ?
 
 ! free env + cpy de env pour child
 
@@ -30,16 +29,14 @@
 	- peut être a -> = -> "asdads"
 	- '=' devient un OPERATEUR ?
 
-! refaire bien la fonction double quotes 
-
-! regler le probleme des commande 
-
-! mettre les export avant _=/usr/bin/env for some raison ....
 
 ? pk les . et .. sont permission denied ? louche
 
-? lhistorique ne marche pas quand la commande est mauvaise :(
+
+!! DODO
 
 ~ changer les wildcards du makefile
-
+? lhistorique ne marche pas quand la commande est mauvaise :(
+! refaire bien la fonction double quotes 
+! gerer le ?
 
