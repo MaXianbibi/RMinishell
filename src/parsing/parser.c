@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/07 20:32:55 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:40:18 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int identifier_parsing(void)
 	return (1);
 }
 
-static void parsing_cmd(void)
+void parsing_cmd(void)
 {
 	t_lexer *tmp;
 	char *str;
@@ -102,7 +102,7 @@ static void parsing_cmd(void)
 	}
 }
 
-static int ft_parse_token ( void )
+int ft_parse_token ( void )
 {
 	t_lexer * tmp;
 
@@ -126,9 +126,12 @@ int ft_parser(void)
 	if (!identifier_parsing())
 		return (print_error(OPERATOR_IN_IDENTIFIER));
 	ft_parse_quotes();
-	parsing_cmd(); // remplace les caractères originel par les cmd (si trouvé)
-	if (!ft_parse_token())
-		return (print_error(CMD_NOT_FOUND));
+	if (!ft_parse_operator())
+		return (0);
+	printf("yo\n");
+	// parsing_cmd(); // remplace les caractères originel par les cmd (si trouvé)
+	// if (!ft_parse_token())
+	// 	return (print_error(CMD_NOT_FOUND));
 		
 	return (1);
 }

@@ -2,7 +2,7 @@
 
 !! gerer les '<'
 	? appliquer plusieurs '<' a la fois, < text.txt < ok.txt cat
-		- je ne pense pas que sa soit obligatoire ;
+		- je ne pense pas que sa soit obligatoire
 
 !! gerer les pipes
 	- ??
@@ -10,33 +10,25 @@
 	- gerer wc|ls
 	? gerer les pipes (ouvert) a la fin
 
-!! builtsin
-
-! "'USER'"
-	- "" == interprète les $ 
-	- '' == non
-
 ! les double OPERATEUR ne marche pas sauf pour '<<' et '>>'
-
-! gerer les " " et ' ' et $
-	- regler le probleme de ks="sad a ad a"
-
 
 ! free env + cpy de env pour child
 
-! faut que je repense le systeme des ""
-	- a="asdasd asdas "
-	- peut être a -> = -> "asdads"
-	- '=' devient un OPERATEUR ?
-
+? regler les double quote sur export
+	- genre export a="ok $USER"
 
 ? pk les . et .. sont permission denied ? louche
 
+? refaire au complet le systeme d'en et dexport pour que : 
+	- a -> '=' -> "asd"
+	- OU
+	- a list chainer -> sous list chainer qui represent le egale -> "sadpmad" ( that would be great ! )
 
 !! DODO
 
 ~ changer les wildcards du makefile
-? lhistorique ne marche pas quand la commande est mauvaise :(
+? lhistorique ne marche pas quand la commande est mauvaise :
 ! refaire bien la fonction double quotes 
 ! gerer le ?
+! beta test les doubles quotes, je ne sais honnetement pas si il marche correctement
 

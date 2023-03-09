@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:48:28 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/08 17:56:20 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/08 20:30:45 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ static char *ft_strldup(const char *str, int n)
 {
 	char *tmp;
 	int size;
-	int i;
 
-	i = 0;
 	size = ft_strlen(str);
 	if (size < n)
 		tmp = calloc(size + 1, sizeof(char));
@@ -32,8 +30,30 @@ static char *ft_strldup(const char *str, int n)
 	return (tmp);
 }
 
-static char * 
+char * remove_single_quotes( char * str)
+{
+	char * tmp;
 
+	tmp = ft_strldup(str + 1 ,ft_strlen(str) - 1);
+	
+	free(str);
+	return ( tmp );
+	
+}
+
+static char * add_single_quote (char * str)
+{
+	char * tmp;
+	int size;
+
+	size = ft_strlen(str);
+	tmp = ft_calloc(ft_strlen(str) + 3, 1);
+	tmp[0] = '\'';
+	ft_strlcpy(tmp + 1, str, 1024);
+	tmp[size + 1] = '\'';
+	free(str);
+	return (tmp);
+}
 static char * add_space (char * str)
 {
 	char * tmp;
@@ -116,7 +136,9 @@ int ft_parse_quotes(void)
 					{
 						if (split_var[i][0] == '\'' && ft_strchr(split_var[i], '$'))
 						{
-							printf("yo\n");
+							isin = 1;
+							split_var[i] = remove_single_quotes(split_var[i]);
+							
 						}
 						if (ft_strchr(split_var[i], '$'))
 						{
@@ -134,6 +156,11 @@ int ft_parse_quotes(void)
 							}
 							else
 								split_var[i][ft_find_index(split_var[i], '$')] = '\0';
+							if (isin == 1)
+							{
+								isin = 0;
+								split_var[i] = add_single_quote(split_var[i]);
+							}
 						}
 						i++;
 					}

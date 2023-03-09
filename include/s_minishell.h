@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_minishell.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/07 17:41:18 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:02:23 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ struct s_global
 	char 		*		error;
 	char		*		cmd;
 	t_env		*		head_env;
+	int					fd;
 };
 typedef struct s_global	t_global;
 

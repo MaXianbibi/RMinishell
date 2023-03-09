@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/08 16:49:12 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:41:50 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
