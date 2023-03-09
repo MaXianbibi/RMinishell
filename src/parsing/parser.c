@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/08 22:40:18 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/08 23:46:55 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,10 +128,9 @@ int ft_parser(void)
 	ft_parse_quotes();
 	if (!ft_parse_operator())
 		return (0);
-	printf("yo\n");
-	// parsing_cmd(); // remplace les caractères originel par les cmd (si trouvé)
-	// if (!ft_parse_token())
-	// 	return (print_error(CMD_NOT_FOUND));
+	parsing_cmd(); // remplace les caractères originel par les cmd (si trouvé)
+	if (!ft_parse_token())
+		return (print_error(CMD_NOT_FOUND));
 		
 	return (1);
 }

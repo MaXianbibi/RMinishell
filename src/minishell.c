@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/08 22:41:50 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/09 00:07:56 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void init_list_env( void )
 static void data_init( char **env )
 {
     ft_memset(&global, 0, sizeof(global));
+	global.terminal = open("/dev/tty", O_RDONLY);
     if (env)
         global.env = env;
 	init_list_env();
@@ -43,6 +44,7 @@ static void data_init( char **env )
 
 static int minishell( void )
 {
+	dup2(global.terminal, STDIN_FILENO);
 	global.cmd  = readline("> ");
     if(!ft_lexer(global.cmd))
         return (0);

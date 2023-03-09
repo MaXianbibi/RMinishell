@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/08 16:44:19 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:41:49 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ static t_lexer * ft_execute_cmd( t_lexer * tmp)
 int ft_execute( void )
 {
 	t_lexer * tmp;
-
 	tmp = global.head_lexer;
 	// if pipe . . . retourne un ptr sur t_lexer . . . je crois
 	// if happen & all . . .

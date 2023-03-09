@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/08 22:02:23 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/09 00:06:55 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ struct s_global
 	char		*		cmd;
 	t_env		*		head_env;
 	int					fd;
+	int					terminal;
 };
 typedef struct s_global	t_global;
 

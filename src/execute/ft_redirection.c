@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 14:29:13 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/08 22:42:22 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/09 00:05:59 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int ft_redirection( t_lexer * tmp)
     if (!tmp->next)
         return (0);
     tmp = tmp->next;
+    tmp->token = OPERATOR;
     global.fd = check_file(tmp->identifier);
     if (!global.fd)
         return (0);
-    dup2(global.fd, STDIN_FILENO);
+    if(dup2(global.fd, STDIN_FILENO) == -1)
+        return (0);
     close(global.fd);
-    dup2(STDIN_FILENO, STDIN_FILENO);
-    
     return (1);
 }
