@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:28:48 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 19:54:13 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 20:28:17 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ char	*find(char **envp, char *cmd)
 static void ptr_builtin(t_lexer * cmd, int i)
 {
 	free(cmd->identifier);
+	cmd->token = BUILTIN;
 	if (i == ECHO)
 		cmd->ptr = &ft_echo;
-	else if (i == EXIT)
-		cmd->ptr = &ft_exit;
+	else if (i ==EXIT)
+		ft_exit (cmd->next);
 	else if (i == PWD)
 		cmd->ptr = &ft_pwd;
 	else if (i == ENV)
@@ -86,7 +87,6 @@ static void ptr_builtin(t_lexer * cmd, int i)
 		cmd->ptr = &ft_export;
 	else if (i == UNSET)
 		cmd->ptr = &ft_unset;
-	cmd->token = BUILTIN;
 }
 
 int find_builtins(t_lexer * cmd)

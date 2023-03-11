@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:44:38 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 14:58:32 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 20:16:05 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ t_lexer *ft_cd(t_lexer *tmp)
         ret = chdir(home);
     if (ret)
         perror("ERROR");
-    return (tmp);
+    exit (0);
 }

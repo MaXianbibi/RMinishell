@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:40:45 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 21:48:06 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 20:22:28 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_lexer *ft_exit(t_lexer *tmp)
     int n;
 
     n = 0;
-    if (tmp->next)
+    if (tmp)
         n = ft_atoi(tmp->identifier);
     freehead();
+
     exit(n);
-    
 }

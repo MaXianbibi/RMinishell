@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/08 22:13:01 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 18:37:23 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int 		ft_parse_quotes ( void );
 int         ft_search_c(const char * str, int c);
 int         ft_redirection( t_lexer * tmp);
 int         ft_parse_operator( void );
+int         ft_redirection_out( t_lexer * tmp);
 
 
 // EXEC

@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/08 23:41:49 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 20:09:38 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern t_global global;
 
-static char * ft_trim(char * str)
+static char *ft_trim(char *str)
 {
 	int i;
 
@@ -24,48 +24,36 @@ static char * ft_trim(char * str)
 		if (str[i] == '/')
 		{
 			i++;
-			break ; 
+			break;
 		}
 		i--;
 	}
 	if (i > 0)
-		return(str + i);
+		return (str + i);
 	else
-		return(str);
+		return (str);
 }
 
-static int ft_execve( char * path_to_cmd, char ** arg)
+static int ft_execve(char *path_to_cmd, char **arg)
 {
-	pid_t	id;
-	char	**child_env;
+	char **child_env;
 
 	child_env = convert_env();
-	id = fork();
-	if (id == -1)
+	if (execve(path_to_cmd, arg, child_env) == -1)
 	{
-		perror("ERROR");
-		return (0);
+		perror("ERROR :");
+		exit(1);
 	}
-	if (id == 0)
-	{
-		if (execve(path_to_cmd, arg, child_env) == -1)
-		{
-			perror("ERROR :");
-			exit (1);
-		}
-		exit (0);
-	}	
-	waitpid(id, NULL, 0);
+	exit(0);
 	ft_free_chartable(child_env); // ?
 	return (0);
 }
 
-static t_lexer * ft_execute_cmd( t_lexer * tmp)
+static t_lexer *ft_execute_cmd(t_lexer *tmp)
 {
-	char *	arg[50];
-	char *	path_to_cmd;
+	char *arg[50];
+	char *path_to_cmd;
 	int i;
-
 
 	i = 1;
 	ft_memset(arg, 0, sizeof(arg));
@@ -75,7 +63,7 @@ static t_lexer * ft_execute_cmd( t_lexer * tmp)
 	while (tmp && (tmp->token == IDENTIFIER || tmp->token == ARG || tmp->token == VAR))
 	{
 		arg[i] = tmp->identifier;
-		tmp = tmp->next;	
+		tmp = tmp->next;
 		i++;
 	}
 	if (arg[0][0])
@@ -83,20 +71,79 @@ static t_lexer * ft_execute_cmd( t_lexer * tmp)
 	return (tmp);
 }
 
-int ft_execute( void )
+static int size_of_tab(int **tab)
 {
-	t_lexer * tmp;
+	int i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+
+	return (i);
+}
+
+static void dup_pipe(int i)
+{
+	int j;
+
+	j = 0;
+	if (i != 0)
+		dup2(global.pipe_tab[i - 1][0], STDIN_FILENO);
+	if (i != size_of_tab(global.pipe_tab))
+	{
+		dup2(global.pipe_tab[i][1], STDOUT_FILENO);
+	}
+	else
+		dup2(global.fd[1], STDOUT_FILENO);
+
+	
+
+	while (j < size_of_tab(global.pipe_tab))
+	{
+		close(global.pipe_tab[j][0]);
+		close(global.pipe_tab[j][1]);
+		j++;
+	}
+}
+
+int ft_execute(void)
+{
+	t_lexer *tmp;
+	pid_t id;
 	tmp = global.head_lexer;
-	// if pipe . . . retourne un ptr sur t_lexer . . . je crois
-	// if happen & all . . .
+	int i;
+
+	i = 0;
 	while (tmp)
 	{
-		if (tmp->token == CMD)
-			tmp = ft_execute_cmd(tmp);
-		else if (tmp->token == BUILTIN)
-			tmp = tmp->ptr(tmp);
+
+		if (tmp->token == CMD || tmp->token == BUILTIN)
+		{
+			id = fork();
+			if (id == 0)
+			{
+				dup_pipe(i);
+				if (tmp->token == CMD)
+					tmp = ft_execute_cmd(tmp);
+				else
+					tmp = tmp->ptr(tmp);
+			}
+			tmp = tmp->next;
+			i++;
+		}
 		else
 			tmp = tmp->next;
 	}
+	i = 0;
+	while (global.pipe_tab[i])
+	{
+		close(global.pipe_tab[i][0]);
+		close(global.pipe_tab[i][1]);
+		i++;
+	}
+	while (i-- > 0)
+		waitpid(id, NULL, 0);
+	waitpid(id, NULL, 0);
+
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 21:56:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/08 23:42:09 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 18:40:21 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int ft_parse_operator( void )
             if (tmp->identifier[0] == '<')
             {   
                 if (!ft_redirection(tmp))
+                    return (FAIL);
+            }
+            if (tmp->identifier[0] == '>')
+            {   
+                if (!ft_redirection_out(tmp))
                     return (FAIL);
             }
         }

@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/08 23:46:55 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 19:17:37 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,35 @@ int ft_parse_token ( void )
 	return (SUCCESS);
 }
 
+static int pipe_init( void )
+{
+	t_lexer * tmp;
+	int size;
+	int i;
+
+	i = 0;
+	size = 0;
+	tmp = global.head_lexer;
+	while (tmp)
+	{
+		if (tmp->token == OPERATOR && tmp->identifier[0] == '|' && tmp->identifier[1] == '\0')
+			size++;
+		tmp = tmp->next;
+	}
+	global.pipe_tab = ft_calloc(sizeof(int *), size + 1);
+	while (i < size)
+	{
+		global.pipe_tab[i] = calloc(sizeof(int), 2);
+		if (pipe(global.pipe_tab[i]) == -1)
+		{
+			perror("ERROR ");
+			return (FAIL);
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
+
 int ft_parser(void)
 {
 	if (!double_operator())
@@ -128,6 +157,7 @@ int ft_parser(void)
 	ft_parse_quotes();
 	if (!ft_parse_operator())
 		return (0);
+	pipe_init();
 	parsing_cmd(); // remplace les caractères originel par les cmd (si trouvé)
 	if (!ft_parse_token())
 		return (print_error(CMD_NOT_FOUND));

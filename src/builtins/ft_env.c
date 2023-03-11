@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:56:04 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 00:17:37 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 20:17:14 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ t_lexer * ft_env( t_lexer * tmp )
         printf("%s\n", tmp_env->str);    
         tmp_env = tmp_env->next;
     }
-    return (tmp);
+    exit (0);
 }
