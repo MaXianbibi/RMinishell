@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:40:45 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 20:22:28 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 17:19:17 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

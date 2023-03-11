@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 20:53:51 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 17:36:58 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int ft_parse_token ( void )
 	tmp = global.head_lexer;
 	while (tmp)
 	{
-		if (tmp->token == IDENTIFIER)
+		if (tmp->token == IDENTIFIER || (!tmp->next && tmp->token == OPERATOR))
 		{
 			global.error = tmp->identifier;
 			return (FAIL);

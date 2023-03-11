@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:28:48 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 20:28:17 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 17:25:56 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void ptr_builtin(t_lexer * cmd, int i)
 	if (i == ECHO)
 		cmd->ptr = &ft_echo;
 	else if (i ==EXIT)
-		ft_exit (cmd->next);
+		cmd->ptr = &ft_exit;
 	else if (i == PWD)
 		cmd->ptr = &ft_pwd;
 	else if (i == ENV)

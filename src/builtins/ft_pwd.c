@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:54:51 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 22:00:31 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 17:47:44 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ t_lexer * ft_pwd( t_lexer * tmp)
         exit (0);
     } 
     perror("ERROR");
-    exit (1);
+    return (1);
 }

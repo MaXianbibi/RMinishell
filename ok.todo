@@ -1,19 +1,30 @@
-% todo
+% todo : Justin
 
-!! gerer les '<'
+!! gerer les '<<'
 	- << ( not so much :) ) nah i thinks its good ^^ 
 
-!! gerer les pipes
-	- gerer wc|ls
-	? gerer les pipes (ouvert) a la fin
+! bien faire le retour des builtins
 
-! free env + cpy + tab pipe + de env pour child
+! parsing
+	- gerer wc|ls ( jai la flemme ) 
+	- verifier les autres operateurs que ceux gerer . .
 
-!! DODO
+? leaks
+	- yen a pas, mais beaucoup de recheable
+
+!! norminette
+
+% todo : DODO
 
 ~ changer les wildcards du makefile
+
 ? lhistorique ne marche pas quand la commande est mauvaise :
+
 ! refaire bien la fonction double quotes 
-! gerer le ?
+
+!! gerer le '?'
+
 ! beta test les doubles quotes, je ne sais honnetement pas si il marche correctement
+
+? message derreur pour la pipe a la fin est pas terrible
 

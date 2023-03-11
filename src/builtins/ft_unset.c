@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:56:20 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 21:57:56 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 17:23:47 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ t_lexer *ft_unset(t_lexer *tmp)
             tmp = tmp->next;
         }
     }
-    exit (0);
+    return (0);
 }

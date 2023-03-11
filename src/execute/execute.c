@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/10 20:09:38 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 17:31:13 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 extern t_global global;
+
+
 
 static char *ft_trim(char *str)
 {
@@ -45,7 +47,7 @@ static int ft_execve(char *path_to_cmd, char **arg)
 		exit(1);
 	}
 	exit(0);
-	ft_free_chartable(child_env); // ?
+	ft_free_chartable(child_env); // ? ne sert a rien quasi sure ?
 	return (0);
 }
 
@@ -90,14 +92,9 @@ static void dup_pipe(int i)
 	if (i != 0)
 		dup2(global.pipe_tab[i - 1][0], STDIN_FILENO);
 	if (i != size_of_tab(global.pipe_tab))
-	{
 		dup2(global.pipe_tab[i][1], STDOUT_FILENO);
-	}
 	else
 		dup2(global.fd[1], STDOUT_FILENO);
-
-	
-
 	while (j < size_of_tab(global.pipe_tab))
 	{
 		close(global.pipe_tab[j][0]);
@@ -116,23 +113,26 @@ int ft_execute(void)
 	i = 0;
 	while (tmp)
 	{
-
-		if (tmp->token == CMD || tmp->token == BUILTIN)
+		if (tmp->token == CMD || (tmp->token == BUILTIN && *global.pipe_tab))
 		{
 			id = fork();
 			if (id == 0)
 			{
 				dup_pipe(i);
 				if (tmp->token == CMD)
-					tmp = ft_execute_cmd(tmp);
+					ft_execute_cmd(tmp);
 				else
-					tmp = tmp->ptr(tmp);
+				{
+					if (tmp->ptr(tmp))
+						exit(1);
+					exit(0);
+				}
 			}
-			tmp = tmp->next;
 			i++;
 		}
-		else
-			tmp = tmp->next;
+		else if (tmp->token == BUILTIN)
+			tmp->ptr(tmp);
+		tmp = tmp->next;
 	}
 	i = 0;
 	while (global.pipe_tab[i])
@@ -144,6 +144,5 @@ int ft_execute(void)
 	while (i-- > 0)
 		waitpid(id, NULL, 0);
 	waitpid(id, NULL, 0);
-
 	return (1);
 }

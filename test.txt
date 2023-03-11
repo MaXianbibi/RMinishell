@@ -1,7 +1,0 @@
-       1       1      66
-       1       1      66
-       1       1      66
-       1       1      66
-/Users/justinmorneau/Documents/RMinishell/RMinishell/RMinishellv2
-/Users/justinmorneau/Documents/RMinishell/RMinishell/RMinishellv2
-/Users/justinmorneau/Documents/RMinishell/RMinishell/RMinishellv2

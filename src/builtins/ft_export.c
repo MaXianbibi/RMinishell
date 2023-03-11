@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:55:13 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 22:07:41 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 17:23:41 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_lexer *ft_export(t_lexer *tmp)
             else
             {
                 if (ft_find_index(tmp->identifier, '=') == (ft_strlen(tmp->identifier) - 1) || ft_find_index(tmp->identifier, '=') == 0) // pas opti mais belek
-                    exit (0);
+                    return (0);
                 // return (tmp);
                 free(env->str);
                 env->str = strdup(tmp->identifier);
@@ -82,7 +82,7 @@ t_lexer *ft_export(t_lexer *tmp)
             tmp = tmp->next;
         }
     }
-    exit (0);
+    return (0);
 }
 
 // bug :

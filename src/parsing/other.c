@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   other.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 20:26:21 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 17:43:42 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void freehead()
 	t_lexer *tmp;
 	t_lexer *head;
 
+	ft_free_chartable((char **)global.pipe_tab);
+	global.pipe_tab = NULL;
 	head = global.head_lexer;
 	tmp = head;
 	while (tmp)

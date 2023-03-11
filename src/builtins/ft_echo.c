@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:27:14 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/10 20:17:05 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 17:23:34 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ t_lexer *ft_echo(t_lexer *tmp)
 	else
 		tmp = tmp->next;
 	printf("%c", n);
-	exit (0);
+	return (0);
 }
