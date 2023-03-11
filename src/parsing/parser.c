@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 19:17:37 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 20:53:51 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void parsing_cmd(void)
 					tmp->identifier = str;
 					tmp->token = CMD;
 				}
+				tmp->token = CMD;
 			}
 		}
 		tmp = tmp->next;

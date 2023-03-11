@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:51:50 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/08 21:41:46 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 22:02:52 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,7 @@ int ft_lexer(const char * str)
 	while (tmp)
 	{
 		if (ft_strchr(OPERATORS, tmp->identifier[0]))
-		{
-			if (tmp->identifier[1])
-				return (print_error(GLUED_OPERATOR)); // a changer
 			tmp->token = OPERATOR;
-		}
 		else if (ft_strchr(VAR_OPERATORS, tmp->identifier[0]))
 			tmp->token = VAR;
 		else

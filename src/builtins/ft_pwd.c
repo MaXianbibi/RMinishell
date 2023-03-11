@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:54:51 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/05 22:04:20 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 22:00:31 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_lexer * ft_pwd( t_lexer * tmp)
     if (getcwd(cwd, sizeof(cwd)))
     {
         printf("%s\n", cwd);
-        return (tmp);
+        exit (0);
     } 
     perror("ERROR");
-    return (tmp);
+    exit (1);
 }

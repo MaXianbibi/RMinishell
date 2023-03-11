@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:55:13 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 20:17:53 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 22:07:41 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ t_lexer *ft_export(t_lexer *tmp)
             else
             {
                 if (ft_find_index(tmp->identifier, '=') == (ft_strlen(tmp->identifier) - 1) || ft_find_index(tmp->identifier, '=') == 0) // pas opti mais belek
-                    return (tmp);
+                    exit (0);
+                // return (tmp);
                 free(env->str);
                 env->str = strdup(tmp->identifier);
             }

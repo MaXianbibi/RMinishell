@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:48:51 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 18:12:07 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 22:04:36 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int	check_file(t_lexer * tmp)
 {
 	int	fd;
     int permission;
-    
     if (tmp->identifier[1])
         permission = O_WRONLY | O_CREAT | O_APPEND;
     else

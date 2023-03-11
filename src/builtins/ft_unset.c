@@ -6,7 +6,7 @@
 /*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:56:20 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 20:22:10 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/10 21:57:56 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ t_lexer *ft_unset(t_lexer *tmp)
             tmp = tmp->next;
         }
     }
-    return (tmp);  
+    exit (0);
 }
