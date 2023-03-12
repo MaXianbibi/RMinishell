@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 18:42:38 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 19:11:43 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ static int minishell( void )
 {
 	dup2(global.terminal, STDIN_FILENO);
 	dup2(global.std_out, STDOUT_FILENO);
-	global.fd[1] = global.std_out;
+	global.fd_out = global.std_out;
 	global.cmd  = readline("> ");
+	pipe(global.fd_in);
     if(!ft_lexer(global.cmd))
         return (0);
 	add_history(global.cmd);
@@ -64,16 +65,10 @@ int main ( int argc, char ** argv, char ** env )
 	printf("MINISHELL : \n");
     (void )argc;
     (void)argv;
-    	data_init(env);
+    data_init(env);
 	while (1)
 	{
 		minishell();
     	freehead();
 	}
-	// free env + child
 }
-
-
-// pour regler le probleme de ks="sad a ad a"
-
-// dans le lexer, si jamais tu trouve ' ou " tu appelle la fonction definie pour ces dernières.

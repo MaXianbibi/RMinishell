@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/11 17:36:58 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:25:00 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int ft_parse_token ( void )
 	tmp = global.head_lexer;
 	while (tmp)
 	{
-		if (tmp->token == IDENTIFIER || (!tmp->next && tmp->token == OPERATOR))
+		if (tmp->token == IDENTIFIER || (!tmp->next && ft_strchr(OPERATORS, tmp->identifier[0])))
 		{
 			global.error = tmp->identifier;
 			return (FAIL);
@@ -162,6 +162,5 @@ int ft_parser(void)
 	parsing_cmd(); // remplace les caractères originel par les cmd (si trouvé)
 	if (!ft_parse_token())
 		return (print_error(CMD_NOT_FOUND));
-		
 	return (1);
 }

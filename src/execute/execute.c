@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/11 17:31:13 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:48:43 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void dup_pipe(int i)
 	if (i != size_of_tab(global.pipe_tab))
 		dup2(global.pipe_tab[i][1], STDOUT_FILENO);
 	else
-		dup2(global.fd[1], STDOUT_FILENO);
+		dup2(global.fd_out, STDOUT_FILENO);
 	while (j < size_of_tab(global.pipe_tab))
 	{
 		close(global.pipe_tab[j][0]);

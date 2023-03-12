@@ -1,30 +1,39 @@
 % todo : Justin
 
-!! gerer les '<<'
-	- << ( not so much :) ) nah i thinks its good ^^ 
+!! signaux
 
 ! bien faire le retour des builtins
 
 ! parsing
 	- gerer wc|ls ( jai la flemme ) 
 	- verifier les autres operateurs que ceux gerer . .
+	- check les operateurs a la fin
+
+! free env + child
+
+! error warning un peut partout
 
 ? leaks
 	- yen a pas, mais beaucoup de recheable
 
-!! norminette
+? pt gerer les -n infinie de echo
+	- pt juste if (strchr_autres_caractère (str, 'n'))
+	-	return (wtf)
+
+? jsp si sa peut se voir ailleurs mais les -n saffiche sur echo :/
+	- pt voir avec le points plus haut
 
 % todo : DODO
 
-~ changer les wildcards du makefile
-
-? lhistorique ne marche pas quand la commande est mauvaise :
-
-! refaire bien la fonction double quotes 
-
 !! gerer le '?'
+	- ez
+!! norminette
+	- laisse moi les fonctions a + de 25 lignes ( en gros le fichier 'quotes')
 
 ! beta test les doubles quotes, je ne sais honnetement pas si il marche correctement
+! changer les wildcards du makefile
 
+? lhistorique ne marche pas quand la commande est mauvaise :
 ? message derreur pour la pipe a la fin est pas terrible
+? le lvl de sh sarrete a 9
 

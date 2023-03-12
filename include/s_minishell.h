@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_minishell.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/10 18:54:20 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 18:47:52 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ struct s_global
 	char 		*		error;
 	char		*		cmd;
 	t_env		*		head_env;
-	int					fd[2];
+	int					fd_in[2];
 	int			**		pipe_tab;
-
+	int					fd_out;
 
 	int					terminal;
 	int					std_out;

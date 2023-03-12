@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirection_out.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:48:51 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 22:04:36 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/11 18:48:28 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int ft_redirection_out( t_lexer * tmp)
 {
     if (!tmp->next)
         return (FAIL);
-    global.fd[1] = check_file(tmp);
+    global.fd_out = check_file(tmp);
     return (SUCCESS);   
 }
