@@ -6,15 +6,13 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/11 18:48:43 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:18:03 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 extern t_global global;
-
-
 
 static char *ft_trim(char *str)
 {
@@ -43,12 +41,10 @@ static int ft_execve(char *path_to_cmd, char **arg)
 	child_env = convert_env();
 	if (execve(path_to_cmd, arg, child_env) == -1)
 	{
-		perror("ERROR :");
+		perror("ERROR ");
 		exit(1);
 	}
 	exit(0);
-	ft_free_chartable(child_env); // ? ne sert a rien quasi sure ?
-	return (0);
 }
 
 static t_lexer *ft_execute_cmd(t_lexer *tmp)
@@ -109,6 +105,7 @@ int ft_execute(void)
 	pid_t id;
 	tmp = global.head_lexer;
 	int i;
+	int res;
 
 	i = 0;
 	while (tmp)
@@ -118,6 +115,9 @@ int ft_execute(void)
 			id = fork();
 			if (id == 0)
 			{
+				signal(SIGINT, SIG_DFL);
+    			signal(SIGQUIT, SIG_DFL);
+    			signal(SIGTSTP, SIG_DFL);
 				dup_pipe(i);
 				if (tmp->token == CMD)
 					ft_execute_cmd(tmp);
@@ -143,6 +143,7 @@ int ft_execute(void)
 	}
 	while (i-- > 0)
 		waitpid(id, NULL, 0);
-	waitpid(id, NULL, 0);
+	waitpid(id, &res, 0);
+	global.last_cmd = atoi(res)
 	return (1);
 }

@@ -1,7 +1,5 @@
 % todo : Justin
 
-!! signaux
-
 ! bien faire le retour des builtins
 
 ! parsing
@@ -27,6 +25,7 @@
 
 !! gerer le '?'
 	- ez
+
 !! norminette
 	- laisse moi les fonctions a + de 25 lignes ( en gros le fichier 'quotes')
 
