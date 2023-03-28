@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/27 14:13:18 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:19:20 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,5 @@ int main(int argc, char **argv, char **env)
 		minishell();
 		freehead();
 	}
+	free(global.last_cmd);
 }

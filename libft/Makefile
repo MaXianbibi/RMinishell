@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+         #
+#    By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 15:53:17 by jmorneau          #+#    #+#              #
-#    Updated: 2023/03/06 17:56:51 by justinmorne      ###   ########.fr        #
+#    Updated: 2023/03/28 17:21:12 by jmorneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS			= ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.
 				ft_memmove.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_strtrim.c ft_split.c ft_strrchr.c \
 				get_next_line.c get_next_line_utils.c \
 				ft_printf_hex.c ft_printf_nbr.c ft_printf_ptr.c ft_printf_string.c ft_printf_unsigned.c ft_printf.c \
-				free_table.c ft_find_index.c \
+				free_table.c ft_find_index.c ft_strldup.c\
 				
 
 OBJS			= $(SRCS:.c=.o)

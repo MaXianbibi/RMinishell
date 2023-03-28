@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/27 14:18:03 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:25:32 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ static char *ft_trim(char *str)
 	}
 	if (i > 0)
 		return (str + i);
-	else
-		return (str);
+	return (str);
 }
 
 static int ft_execve(char *path_to_cmd, char **arg)
@@ -49,7 +48,7 @@ static int ft_execve(char *path_to_cmd, char **arg)
 
 static t_lexer *ft_execute_cmd(t_lexer *tmp)
 {
-	char *arg[50];
+	char *arg[1024];
 	char *path_to_cmd;
 	int i;
 
@@ -58,7 +57,7 @@ static t_lexer *ft_execute_cmd(t_lexer *tmp)
 	path_to_cmd = tmp->identifier;
 	arg[0] = ft_trim(tmp->identifier);
 	tmp = tmp->next;
-	while (tmp && (tmp->token == IDENTIFIER || tmp->token == ARG || tmp->token == VAR))
+	while (tmp && (tmp->token == IDENTIFIER || tmp->token == ARG || tmp->token == VAR) && i < 1024)
 	{
 		arg[i] = tmp->identifier;
 		tmp = tmp->next;
@@ -76,7 +75,6 @@ static int size_of_tab(int **tab)
 	i = 0;
 	while (tab[i])
 		i++;
-
 	return (i);
 }
 
@@ -107,7 +105,9 @@ int ft_execute(void)
 	int i;
 	int res;
 
+	res = 0;
 	i = 0;
+	id = 0;
 	while (tmp)
 	{
 		if (tmp->token == CMD || (tmp->token == BUILTIN && *global.pipe_tab))
@@ -131,7 +131,12 @@ int ft_execute(void)
 			i++;
 		}
 		else if (tmp->token == BUILTIN)
-			tmp->ptr(tmp);
+		{
+			if (tmp->ptr(tmp))
+				res = 0;
+			else
+				res = 1;
+		}
 		tmp = tmp->next;
 	}
 	i = 0;
@@ -142,8 +147,11 @@ int ft_execute(void)
 		i++;
 	}
 	while (i-- > 0)
-		waitpid(id, NULL, 0);
+		waitpid(id, &res, 0);
 	waitpid(id, &res, 0);
-	global.last_cmd = atoi(res)
+
+	if (global.last_cmd)
+		free(global.cmd);
+	global.last_cmd = ft_itoa(res);
 	return (1);
 }

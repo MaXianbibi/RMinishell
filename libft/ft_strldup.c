@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_strldup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 21:40:45 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/28 18:50:49 by jmorneau         ###   ########.fr       */
+/*   Created: 2023/03/28 17:19:29 by jmorneau          #+#    #+#             */
+/*   Updated: 2023/03/28 17:23:19 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libft.h"
 
-t_lexer *ft_exit(t_lexer *tmp)
+char *ft_strldup(const char *str, int n)
 {
-    int n;
+	char	*tmp;
+	int 	size;
 
-    n = 0;
-    if (tmp)
-        n = ft_atoi(tmp->identifier);
-    freehead();
-    exit(n);
+	size = ft_strlen(str);
+	if (size < n)
+		tmp = ft_calloc(size + 1, sizeof(char));
+	else
+		tmp = ft_calloc(n + 1, sizeof(char));
+	ft_strlcpy(tmp, str, n);
+	return (tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/27 14:15:50 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:15:36 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ struct s_global
 	char 		*		error;
 	char		*		cmd;
 	t_env		*		head_env;
-	char 		*		last_cmd;
 	int			**		pipe_tab;
 	int					fd_in[2];
+	char *				last_cmd;
 
 	int					fd_out;
 	int					terminal;

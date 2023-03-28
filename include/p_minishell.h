@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_minishell.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/10 18:37:23 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/28 18:41:48 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int         ft_search_c(const char * str, int c);
 int         ft_redirection( t_lexer * tmp);
 int         ft_parse_operator( void );
 int         ft_redirection_out( t_lexer * tmp);
+char 		*env_var(char * tmp);
+char * 		double_quotes(t_lexer *tmp);
 
 
 // EXEC

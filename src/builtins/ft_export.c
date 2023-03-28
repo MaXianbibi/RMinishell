@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:55:13 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/11 17:23:41 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:12:32 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ t_lexer *ft_export(t_lexer *tmp)
             {
                 if (ft_find_index(tmp->identifier, '=') == (ft_strlen(tmp->identifier) - 1) || ft_find_index(tmp->identifier, '=') == 0) // pas opti mais belek
                     return (0);
-                // return (tmp);
                 free(env->str);
                 env->str = strdup(tmp->identifier);
             }
@@ -84,9 +83,3 @@ t_lexer *ft_export(t_lexer *tmp)
     }
     return (0);
 }
-
-// bug :
-
-// regler les ""
-// regler les $
-// peut faire un message derreur pour le k = "dsaas"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:51:50 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/10 22:02:52 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/28 18:01:20 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int ft_lexer(const char * str)
 	{
 		if (ft_strchr(OPERATORS, tmp->identifier[0]))
 			tmp->token = OPERATOR;
-		else if (ft_strchr(VAR_OPERATORS, tmp->identifier[0]))
+		else if (ft_strchr(VAR_OPERATORS, tmp->identifier[0]) || ft_strchr(tmp->identifier, '$'))
 			tmp->token = VAR;
 		else
 			tmp->token = IDENTIFIER;

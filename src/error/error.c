@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:02:29 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/06 19:14:26 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/28 18:44:27 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

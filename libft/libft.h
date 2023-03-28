@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 15:50:08 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/06 17:56:18 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/28 18:08:47 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,9 @@ void	ft_putendl_fd(char *s, int fd);
 int		ft_toupper(int ch);
 int		ft_tolower(int ch);
 void	*ft_memset(void *str, int c, unsigned long n);
-int		ft_strlen(char *str);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
-int		ft_strlen(char *str);
+int		ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
@@ -69,6 +68,8 @@ char	*ft_strrchr(const char *s, int c);
 void	ft_free_chartable(char **table);
 int		ft_chartable_linecount(char **table);
 int		ft_find_index( const char * str, char c);
+char 	*ft_strldup(const char *str, int n);
+char 	*multiple_join(char **split, int add_space);
 
 // printf
 int		ft_printf(const char *fmt, ...);

@@ -6,11 +6,20 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 18:21:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/07 20:20:02 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:10:43 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char * addspace (char * str)
+{
+	char * tmp;
+
+	tmp = ft_strjoin(str, " ");
+	free(str);
+	return (tmp);
+}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -36,5 +45,37 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	str[i] = '\0';
+	return (str);
+}
+
+char *multiple_join(char **split, int add_space)
+{
+	int i;
+	char *tmp;
+	char *str;
+
+	i = 0;
+	tmp = NULL;
+	str = NULL;
+	while (split[i])
+	{
+		if (str)
+		{
+			free(str);
+			str = NULL;
+		}
+		str = ft_strjoin(tmp, split[i]);
+		if (split[i + 1] && add_space)
+			str = addspace(str);		
+		if (tmp)
+		{
+			free(tmp);
+			tmp = NULL;
+		}
+		tmp = ft_strdup(str);
+		i++;
+	}
+	if (tmp)
+		free(tmp);
 	return (str);
 }
