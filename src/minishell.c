@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/28 19:19:20 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:19:28 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void signal_handler(int n)
 	}
 }
 
-// *((int*)global.head_env + 7) = 0b1111111111111111111111111111111;
-// printf("%s %p %d\n",global.head_env->str, global.head_env->next, *((int*)global.head_env + 7));  // OK
 static void init_list_env(void)
 {
 	int i;
@@ -49,6 +47,7 @@ static void data_init(char **env)
 	ft_memset(&global, 0, sizeof(global));
 	global.terminal = open("/dev/tty", O_RDONLY);
 	global.std_out = dup(STDOUT_FILENO);
+	global.last_cmd.str = ft_strdup("0");
 	if (env)
 		global.env = env;
 	init_list_env();
@@ -87,5 +86,4 @@ int main(int argc, char **argv, char **env)
 		minishell();
 		freehead();
 	}
-	free(global.last_cmd);
 }

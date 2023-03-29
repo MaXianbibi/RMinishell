@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   d_minishell.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:47:16 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/06 18:57:32 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/03/28 19:32:52 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define SUCCESS 1
 # define FAIL 0
 
-#define OPERATORS "|&;<>()`\\*?[#˜%"
+#define OPERATORS "|&;<>()`\\*[#˜%"
 
 #define VAR_OPERATORS "$\"\'"
 

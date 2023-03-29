@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 14:29:13 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/11 19:09:28 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:47:38 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,28 @@ static int check_file(char *str)
 int static delimiter(t_lexer *tmp)
 {
 	char * s;
+	// int fd;
 
 	tmp = tmp->next;
-	tmp->token = OPERATOR;
+	if (tmp->next)
+	{
+		global.error = tmp->identifier;
+		print_error(CMD_NOT_FOUND);
+		return (0);
+	}
 	s = readline("heredoc>");
+	if (!s)
+		return (SUCCESS);
 	while (ft_strncmp(s, tmp->identifier, 1024))
 	{
 		s = ft_strjoin(s, "\n");
 		ft_putstr_fd(s, global.fd_in[1]);
 		free(s);
 		s = readline("heredoc>");
+		if (!s)
+			break ;
 	}
-	close(global.fd_in[1]);
-	dup2(global.fd_in[0], STDIN_FILENO);
-	close(global.fd_in[0]);
-	return (SUCCESS);
+	return (0);
 }
 
 int ft_redirection(t_lexer *tmp)
@@ -53,7 +60,7 @@ int ft_redirection(t_lexer *tmp)
 	if (!tmp->next)
 		return (FAIL);
 	if (tmp->identifier[1] && tmp->identifier[1] == '<')
-		delimiter(tmp);
+		return (delimiter(tmp));
 	else
 	{
 		tmp = tmp->next;

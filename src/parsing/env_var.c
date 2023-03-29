@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:07:55 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/28 19:13:00 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:45:03 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ static char *ret_var(char *identifier)
 	t_env *tmp_env;
 	char *str;
 
+
 	tmp_env = check_list(identifier);
-	if (tmp_env)
+	if (tmp_env == &global.last_cmd)
+		str = global.last_cmd.str;
+	else if (tmp_env)
 		str = ft_strdup(ft_strchr(tmp_env->str, '=') + 1);
 	else
 		str = ft_strdup("");
@@ -58,7 +61,6 @@ char *env_var(char * tmp)
 	split_var = NULL;
 	if (tmp[1])
 	{
-		
 		if (tmp[0] == '$')
 			str = ret_var(tmp + 1);
 		else

@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/28 19:15:36 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:34:30 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_env t_env;
 
 struct s_global
 {
+	t_env 				last_cmd;
 	t_lexer 	*		head_lexer;
 	char 		** 		env;
 	char 		*		error;
@@ -41,7 +42,6 @@ struct s_global
 	t_env		*		head_env;
 	int			**		pipe_tab;
 	int					fd_in[2];
-	char *				last_cmd;
 
 	int					fd_out;
 	int					terminal;
