@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirection_out.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:48:51 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/28 20:37:22 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:28:31 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern t_global global;
 
-static int	check_file(t_lexer * tmp)
+int	check_file_out(t_lexer * tmp)
 {
 	int	fd;
     int permission;
@@ -35,6 +35,6 @@ int ft_redirection_out( t_lexer * tmp)
 {
     if (!tmp->next)
         return (FAIL);
-    global.fd_out = check_file(tmp);
+    global.fd_out = check_file_out(tmp);
     return (SUCCESS);   
 }

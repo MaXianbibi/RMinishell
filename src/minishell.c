@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/28 20:19:28 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:43:15 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int main(int argc, char **argv, char **env)
 	printf("MINISHELL : \n");
 	(void)argc;
 	(void)argv;
-
 	signal(SIGINT, signal_handler);
 	signal(SIGTSTP, SIG_IGN);
 	data_init(env);
