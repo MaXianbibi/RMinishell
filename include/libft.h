@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 15:50:08 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/28 18:08:34 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/31 20:05:33 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ int		ft_print_error(char *str);
 int     ft_find_index( const char * str, char c);
 char 	*ft_strldup(const char *str, int n);
 char 	*multiple_join(char **split, int add_space);
+int size_of_tab(int **tab);
+void ft_free(void *ptr);
+
 
 // printf
 int		ft_printf(const char *fmt, ...);

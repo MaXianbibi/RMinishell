@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_size_of_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 21:54:51 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/31 19:22:49 by jmorneau         ###   ########.fr       */
+/*   Created: 2023/03/31 19:26:26 by jmorneau          #+#    #+#             */
+/*   Updated: 2023/03/31 19:26:36 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-
-t_lexer	*ft_pwd(t_lexer *tmp)
+int	size_of_tab(int **tab)
 {
-	char	cwd[1024];
+	int	i;
 
-	tmp = tmp->next;
-	if (getcwd(cwd, sizeof(cwd)))
-	{
-		printf("%s\n", cwd);
-		return (0);
-	}
-	perror("ERROR");
-	return (tmp);
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }

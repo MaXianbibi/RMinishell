@@ -6,27 +6,25 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:07:55 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/28 19:45:03 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/31 20:10:43 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-extern t_global global;
-
-static char * remove_single_quotes( char * str)
+static char	*remove_single_quotes(char *str)
 {
-	char * tmp;
-	
-	tmp = ft_strldup(str + 1 ,ft_strlen(str) - 1);
+	char	*tmp;
+
+	tmp = ft_strldup(str + 1, ft_strlen(str) - 1);
 	free(str);
-	return ( tmp );
+	return (tmp);
 }
 
-static char * add_c (char * str, char c)
+static char	*add_c(char *str, char c)
 {
-	char * tmp;
-	int size;
+	char	*tmp;
+	int		size;
 
 	size = ft_strlen(str);
 	tmp = ft_calloc(ft_strlen(str) + 3, 1);
@@ -37,15 +35,14 @@ static char * add_c (char * str, char c)
 	return (tmp);
 }
 
-static char *ret_var(char *identifier)
+static char	*ret_var(char *identifier)
 {
-	t_env *tmp_env;
-	char *str;
-
+	t_env	*tmp_env;
+	char	*str;
 
 	tmp_env = check_list(identifier);
-	if (tmp_env == &global.last_cmd)
-		str = global.last_cmd.str;
+	if (tmp_env == &g_global.last_cmd)
+		str = g_global.last_cmd.str;
 	else if (tmp_env)
 		str = ft_strdup(ft_strchr(tmp_env->str, '=') + 1);
 	else
@@ -53,10 +50,10 @@ static char *ret_var(char *identifier)
 	return (str);
 }
 
-char *env_var(char * tmp)
+char	*env_var(char *tmp)
 {
-	char *str;
-	char ** split_var;
+	char	*str;
+	char	**split_var;
 
 	split_var = NULL;
 	if (tmp[1])
@@ -75,10 +72,10 @@ char *env_var(char * tmp)
 	}
 	else
 		str = ft_strdup("$");
-	return(str);
+	return (str);
 }
 
-char * double_quotes(t_lexer *tmp)
+char	*double_quotes(t_lexer *tmp)
 {
 	char *var;
 	char **split_var;
@@ -103,7 +100,7 @@ char * double_quotes(t_lexer *tmp)
 					split_var[i] = add_c(var, '\'');
 				}
 				else
-				{	
+				{
 					var = env_var(split_var[i]);
 					free(split_var[i]);
 					split_var[i] = var;

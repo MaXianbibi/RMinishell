@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operator.c                                         :+:      :+:    :+:   */
+/*   ft_convert_env.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 21:56:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/31 19:57:35 by jmorneau         ###   ########.fr       */
+/*   Created: 2023/03/31 20:08:51 by jmorneau          #+#    #+#             */
+/*   Updated: 2023/03/31 20:12:24 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../include/minishell.h"
 
-int	ft_parse_operator(void)
+static int	size_of_chained(t_env *tmp)
 {
-	t_lexer	*tmp;
+	int	i;
 
-	tmp = g_global.head_lexer;
+	i = 0;
 	while (tmp)
 	{
-		if (tmp->token == OPERATOR)
-		{
-			if (tmp->identifier[0] == '<')
-			{
-				if (!ft_redirection(tmp))
-					return (FAIL);
-			}
-			if (tmp->identifier[0] == '>')
-			{
-				if (!ft_redirection_out(tmp))
-					return (FAIL);
-			}
-		}
 		tmp = tmp->next;
+		i++;
 	}
-	return (SUCCESS);
+	return (i);
+}
+
+char	**convert_env(void)
+{
+	char	**env;
+	t_env	*tmp;
+	int		size;
+
+	tmp = g_global.head_env;
+	size = size_of_chained(g_global.head_env);
+	env = ft_calloc(sizeof(char *), size + 1);
+	size = 0;
+	while (tmp)
+	{
+		env[size] = ft_strdup(tmp->str);
+		tmp = tmp->next;
+		size++;
+	}
+	return (env);
 }

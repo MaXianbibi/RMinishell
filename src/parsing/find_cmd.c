@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:28:48 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/11 17:25:56 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/31 20:11:47 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ char	*find(char **envp, char *cmd)
 	return (path_to_command);
 }
 
-static void ptr_builtin(t_lexer * cmd, int i)
+static void	ptr_builtin(t_lexer *cmd, int i)
 {
 	free(cmd->identifier);
 	cmd->token = BUILTIN;
 	if (i == ECHO)
 		cmd->ptr = &ft_echo;
-	else if (i ==EXIT)
+	else if (i == EXIT)
 		cmd->ptr = &ft_exit;
 	else if (i == PWD)
 		cmd->ptr = &ft_pwd;
@@ -89,17 +89,16 @@ static void ptr_builtin(t_lexer * cmd, int i)
 		cmd->ptr = &ft_unset;
 }
 
-int find_builtins(t_lexer * cmd)
+int	find_builtins(t_lexer *cmd)
 {
-	static char * list[10] = {"echo", "cd", "pwd", "export",
-								 "unset", "env", "exit"};
-	char * tmp;
-	int i;
+	static char	*list[] = {"echo", "cd", "pwd",
+		"export", "unset", "env", "exit"};
+	char		*tmp;
+	int			i;
 
 	i = 0;
 	tmp = strdup(cmd->identifier);
-	lowercase_str(tmp);	
-	
+	lowercase_str(tmp);
 	while (i < 7)
 	{
 		if (!ft_strncmp(tmp, list[i], 100))

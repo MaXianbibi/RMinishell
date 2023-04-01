@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 21:54:51 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/31 19:22:49 by jmorneau         ###   ########.fr       */
+/*   Created: 2023/03/31 20:00:53 by jmorneau          #+#    #+#             */
+/*   Updated: 2023/03/31 20:03:41 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include <stdlib.h>
 
-t_lexer	*ft_pwd(t_lexer *tmp)
+void ft_free(void *ptr)
 {
-	char	cwd[1024];
-
-	tmp = tmp->next;
-	if (getcwd(cwd, sizeof(cwd)))
-	{
-		printf("%s\n", cwd);
-		return (0);
-	}
-	perror("ERROR");
-	return (tmp);
+	if (ptr)
+		free(ptr);
+	ptr = NULL;
 }

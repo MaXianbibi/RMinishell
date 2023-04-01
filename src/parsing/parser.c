@@ -6,23 +6,21 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/11 18:25:00 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/03/31 20:08:21 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-extern t_global global;
-
-static int double_operator(void)
+static int	double_operator(void)
 {
-	t_lexer *tmp;
-	int i;
+	t_lexer	*tmp;
+	int		i;
 
-	tmp = global.head_lexer;
-
+	tmp = g_global.head_lexer;
 	i = 1;
-	if (tmp->token == OPERATOR && (tmp->identifier[0] == '<' || tmp->identifier[0] == '>'))
+	if (tmp->token == OPERATOR && (tmp->identifier[0] == '<'
+			|| tmp->identifier[0] == '>'))
 		i = 0;
 	while (tmp)
 	{
@@ -32,7 +30,7 @@ static int double_operator(void)
 			i = 0;
 		if (i > 1)
 		{
-			global.error = tmp->identifier;
+			g_global.error = tmp->identifier;
 			return (0);
 		}
 		tmp = tmp->next;
@@ -40,12 +38,12 @@ static int double_operator(void)
 	return (1);
 }
 
-static int identifier_parsing(void)
+static int	identifier_parsing(void)
 {
-	t_lexer *tmp;
-	int i;
+	t_lexer	*tmp;
+	int		i;
 
-	tmp = global.head_lexer;
+	tmp = g_global.head_lexer;
 	while (tmp)
 	{
 		i = 0;
@@ -55,7 +53,7 @@ static int identifier_parsing(void)
 			{
 				if (ft_strchr(OPERATORS, tmp->identifier[i]))
 				{
-					global.error = tmp->identifier;
+					g_global.error = tmp->identifier;
 					return (0);
 				}
 				i++;
@@ -66,23 +64,24 @@ static int identifier_parsing(void)
 	return (1);
 }
 
-void parsing_cmd(void)
+void	parsing_cmd(void)
 {
-	t_lexer *tmp;
-	char *str;
+	t_lexer	*tmp;
+	char	*str;
 
-	tmp = global.head_lexer;
+	tmp = g_global.head_lexer;
 	while (tmp)
 	{
 		if (tmp->token == IDENTIFIER)
 		{
 			if (find_builtins(tmp))
-				continue;
-			else if ((tmp->identifier[0] == '.' || tmp->identifier[0] == '/' ) && !access(tmp->identifier, X_OK))
+				continue ;
+			else if ((tmp->identifier[0] == '.' || tmp->identifier[0] == '/')
+					&& !access(tmp->identifier, X_OK))
 				tmp->token = CMD;
-			else if (*global.env)
+			else if (*g_global.env)
 			{
-				str = find(global.env, tmp->identifier);
+				str = find(g_global.env, tmp->identifier);
 				if (str)
 				{
 					free(tmp->identifier);
@@ -103,16 +102,17 @@ void parsing_cmd(void)
 	}
 }
 
-int ft_parse_token ( void )
+int	ft_parse_token(void)
 {
-	t_lexer * tmp;
+	t_lexer	*tmp;
 
-	tmp = global.head_lexer;
+	tmp = g_global.head_lexer;
 	while (tmp)
 	{
-		if (tmp->token == IDENTIFIER || (!tmp->next && ft_strchr(OPERATORS, tmp->identifier[0])))
+		if (tmp->token == IDENTIFIER || (!tmp->next && ft_strchr(OPERATORS,
+					tmp->identifier[0])))
 		{
-			global.error = tmp->identifier;
+			g_global.error = tmp->identifier;
 			return (FAIL);
 		}
 		tmp = tmp->next;
@@ -120,26 +120,27 @@ int ft_parse_token ( void )
 	return (SUCCESS);
 }
 
-static int pipe_init( void )
+static int	pipe_init(void)
 {
-	t_lexer * tmp;
-	int size;
-	int i;
+	t_lexer	*tmp;
+	int		size;
+	int		i;
 
 	i = 0;
 	size = 0;
-	tmp = global.head_lexer;
+	tmp = g_global.head_lexer;
 	while (tmp)
 	{
-		if (tmp->token == OPERATOR && tmp->identifier[0] == '|' && tmp->identifier[1] == '\0')
+		if (tmp->token == OPERATOR && tmp->identifier[0] == '|'
+			&& tmp->identifier[1] == '\0')
 			size++;
 		tmp = tmp->next;
 	}
-	global.pipe_tab = ft_calloc(sizeof(int *), size + 1);
+	g_global.pipe_tab = ft_calloc(sizeof(int *), size + 1);
 	while (i < size)
 	{
-		global.pipe_tab[i] = calloc(sizeof(int), 2);
-		if (pipe(global.pipe_tab[i]) == -1)
+		g_global.pipe_tab[i] = calloc(sizeof(int), 2);
+		if (pipe(g_global.pipe_tab[i]) == -1)
 		{
 			perror("ERROR ");
 			return (FAIL);
@@ -149,7 +150,7 @@ static int pipe_init( void )
 	return (SUCCESS);
 }
 
-int ft_parser(void)
+int	ft_parser(void)
 {
 	if (!double_operator())
 		return (print_error(DOUBLE_OPERATOR));
