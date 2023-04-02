@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/31 20:08:21 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 09:57:47 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	parsing_cmd(void)
 			if (find_builtins(tmp))
 				continue ;
 			else if ((tmp->identifier[0] == '.' || tmp->identifier[0] == '/')
-					&& !access(tmp->identifier, X_OK))
+				&& !access(tmp->identifier, X_OK))
 				tmp->token = CMD;
 			else if (*g_global.env)
 			{
@@ -109,8 +109,8 @@ int	ft_parse_token(void)
 	tmp = g_global.head_lexer;
 	while (tmp)
 	{
-		if (tmp->token == IDENTIFIER || (!tmp->next && ft_strchr(OPERATORS,
-					tmp->identifier[0])))
+		if (tmp->identifier[0] && (tmp->token == IDENTIFIER || (!tmp->next && ft_strchr(OPERATORS,
+					tmp->identifier[0]))))
 		{
 			g_global.error = tmp->identifier;
 			return (FAIL);
@@ -160,7 +160,7 @@ int	ft_parser(void)
 	if (!ft_parse_operator())
 		return (0);
 	pipe_init();
-	parsing_cmd(); // remplace les caractères originel par les cmd (si trouvé)
+	parsing_cmd();
 	if (!ft_parse_token())
 		return (print_error(CMD_NOT_FOUND));
 	return (1);
