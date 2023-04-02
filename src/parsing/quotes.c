@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:48:28 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/31 20:10:18 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 11:16:51 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_parse_quotes(void)
 				var = env_var(tmp->identifier);
 			free(tmp->identifier);
 			tmp->identifier = var;
+			tmp->token = IDENTIFIER;
 		}
 		tmp = tmp->next;
 	}

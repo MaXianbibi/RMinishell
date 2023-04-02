@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:29:07 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/07 20:57:55 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:41:24 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	ft_free_chartable(char **table)
 	if (table)
 	{
 		free(table);
-		table = NULL;	
+		table = NULL;
 	}
 }

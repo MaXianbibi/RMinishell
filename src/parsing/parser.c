@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/04/02 09:57:47 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:32:16 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,44 +64,6 @@ static int	identifier_parsing(void)
 	return (1);
 }
 
-void	parsing_cmd(void)
-{
-	t_lexer	*tmp;
-	char	*str;
-
-	tmp = g_global.head_lexer;
-	while (tmp)
-	{
-		if (tmp->token == IDENTIFIER)
-		{
-			if (find_builtins(tmp))
-				continue ;
-			else if ((tmp->identifier[0] == '.' || tmp->identifier[0] == '/')
-				&& !access(tmp->identifier, X_OK))
-				tmp->token = CMD;
-			else if (*g_global.env)
-			{
-				str = find(g_global.env, tmp->identifier);
-				if (str)
-				{
-					free(tmp->identifier);
-					tmp->identifier = str;
-					tmp->token = CMD;
-				}
-				tmp->token = CMD;
-			}
-		}
-		tmp = tmp->next;
-		while (tmp && tmp->token != OPERATOR)
-		{
-			tmp->token = ARG;
-			tmp = tmp->next;
-		}
-		if (tmp)
-			tmp = tmp->next;
-	}
-}
-
 int	ft_parse_token(void)
 {
 	t_lexer	*tmp;
@@ -109,8 +71,8 @@ int	ft_parse_token(void)
 	tmp = g_global.head_lexer;
 	while (tmp)
 	{
-		if (tmp->identifier[0] && (tmp->token == IDENTIFIER || (!tmp->next && ft_strchr(OPERATORS,
-					tmp->identifier[0]))))
+		if (tmp->identifier[0] && (tmp->token == IDENTIFIER || (!tmp->next
+					&& ft_strchr(OPERATORS, tmp->identifier[0]))))
 		{
 			g_global.error = tmp->identifier;
 			return (FAIL);
@@ -140,12 +102,11 @@ static int	pipe_init(void)
 	while (i < size)
 	{
 		g_global.pipe_tab[i] = calloc(sizeof(int), 2);
-		if (pipe(g_global.pipe_tab[i]) == -1)
+		if (pipe(g_global.pipe_tab[i++]) == -1)
 		{
 			perror("ERROR ");
 			return (FAIL);
 		}
-		i++;
 	}
 	return (SUCCESS);
 }

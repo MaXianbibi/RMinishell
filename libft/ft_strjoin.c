@@ -6,15 +6,15 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 18:21:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/28 18:10:43 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:40:23 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char * addspace (char * str)
+char	*addspace(char *str)
 {
-	char * tmp;
+	char	*tmp;
 
 	tmp = ft_strjoin(str, " ");
 	free(str);
@@ -29,8 +29,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	str = malloc(sizeof(char) * (ft_strlen((char *)s1)
-				+ ft_strlen((char *)s2)) + 1);
+	str = malloc(sizeof(char) * (ft_strlen((char *)s1) + ft_strlen((char *)s2))
+			+ 1);
 	if (!str)
 		return (NULL);
 	while (s1 && s1[i] != '\0')
@@ -48,11 +48,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-char *multiple_join(char **split, int add_space)
+char	*multiple_join(char **split, int add_space)
 {
-	int i;
-	char *tmp;
-	char *str;
+	int		i;
+	char	*tmp;
+	char	*str;
 
 	i = 0;
 	tmp = NULL;
@@ -60,18 +60,12 @@ char *multiple_join(char **split, int add_space)
 	while (split[i])
 	{
 		if (str)
-		{
-			free(str);
-			str = NULL;
-		}
+			ft_free((void **)&str);
 		str = ft_strjoin(tmp, split[i]);
 		if (split[i + 1] && add_space)
-			str = addspace(str);		
+			str = addspace(str);
 		if (tmp)
-		{
-			free(tmp);
-			tmp = NULL;
-		}
+			ft_free((void **)&tmp);
 		tmp = ft_strdup(str);
 		i++;
 	}

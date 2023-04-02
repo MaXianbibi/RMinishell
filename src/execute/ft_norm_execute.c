@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:25:32 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/31 19:46:10 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 10:59:20 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	ft_execute_env(t_lexer *tmp, pid_t *id, int *res)
 		else if (tmp->token == BUILTIN)
 		{
 			if (tmp->ptr(tmp))
-				*res = 0;
-			else
 				*res = 1;
+			else
+				*res = 0;
 		}
 		tmp = tmp->next;
 	}

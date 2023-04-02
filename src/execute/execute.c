@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:22:09 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/31 19:47:46 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:23:04 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ int	ft_execute(void)
 		i++;
 	}
 	while (i-- > 0)
-		waitpid(id, &res, 0);
+		waitpid(id, NULL, 0);
 	waitpid(id, &res, 0);
-	g_global.last_cmd.str = ft_itoa(res);
+	ft_free((void **)&g_global.last_cmd->str);
+	g_global.last_cmd->str = ft_itoa(res % 255);
 	return (1);
 }

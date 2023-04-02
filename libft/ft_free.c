@@ -6,15 +6,15 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 20:00:53 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/31 20:03:41 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:41:02 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void ft_free(void *ptr)
+void	ft_free(void **ptr)
 {
-	if (ptr)
-		free(ptr);
-	ptr = NULL;
+	if (*ptr)
+		free(*ptr);
+	*ptr = NULL;
 }

@@ -6,27 +6,11 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:51:50 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/04/02 09:56:34 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 10:48:13 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-// int	ft_search_c(const char *str, int c)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str[i] && str[i] != c)
-// 	{
-// 		if (str[i] == '\'' || str[i] == '\"')
-// 			c = str[i];
-// 		i++;
-// 	}
-// 	if (str[i] && (c == '\'' || c == '\"') && str[i] == c)
-// 		i++;
-// 	return (i);
-// }
 
 int	ft_search_c(const char *str, int c)
 {
@@ -63,7 +47,6 @@ char	*ft_word(const char *str, int *index)
 		return (NULL);
 	i += 2;
 	tmp = ft_substr(str, 0, i);
-	
 	if (!strncmp(tmp, "\"\"", 1024) || !strncmp(tmp, "\'\'", 1024))
 	{
 		free(tmp);

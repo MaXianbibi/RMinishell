@@ -6,71 +6,70 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/28 19:34:30 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:52:55 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef S_MINISHELL_H
 # define S_MINISHELL_H
 
-struct s_lexer
+struct					s_lexer
 {
-	struct s_lexer	*next;
-	union 
+	struct s_lexer		*next;
+	union
 	{
-		char				*identifier;
-		struct s_lexer 		* (*ptr)(struct s_lexer * );
+		char			*identifier;
+		struct s_lexer	*(*ptr)(struct s_lexer *);
 	};
-	int				token;
+	int					token;
 };
-typedef struct s_lexer t_lexer;
+typedef struct s_lexer	t_lexer;
 
-struct s_env
+struct					s_env
 {
-	struct s_env	*next;
-	char 			*str;	
+	struct s_env		*next;
+	char				*str;
 };
-typedef struct s_env t_env;
+typedef struct s_env	t_env;
 
-struct s_global
+struct					s_global
 {
-	t_env 				last_cmd;
-	t_lexer 	*		head_lexer;
-	char 		** 		env;
-	char 		*		error;
-	char		*		cmd;
-	t_env		*		head_env;
-	int			**		pipe_tab;
+	t_lexer				*head_lexer;
+	char				**env;
+	char				*error;
+	char				*cmd;
+	t_env				*head_env;
+	int					**pipe_tab;
 	int					fd_in[2];
-
+	t_env				*last_cmd;
 	int					fd_out;
 	int					terminal;
 	int					std_out;
-	
 };
 typedef struct s_global	t_global;
 
-enum	e_token
+enum					e_token
 {
-    IDENTIFIER,
-    OPERATOR,
+	IDENTIFIER,
+	OPERATOR,
 	CMD,
 	ARG,
 	VAR,
 	BUILTIN
 };
 
-enum	e_error
+enum					e_error
 {
-    GLUED_OPERATOR,
+	GLUED_OPERATOR,
 	DOUBLE_OPERATOR,
 	OPERATOR_IN_IDENTIFIER,
 	NO_END,
 	CMD_NOT_FOUND,
-	NOT_ENOUGH_ARG
+	NOT_ENOUGH_ARG,
+	UNKNOW_OP
 };
 
-enum	e_builtins
+enum					e_builtins
 {
 	ECHO,
 	CD,
@@ -80,6 +79,5 @@ enum	e_builtins
 	ENV,
 	EXIT
 };
-
 
 #endif

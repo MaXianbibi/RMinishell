@@ -6,13 +6,12 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:48 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/31 19:20:04 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:46:33 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
 
 # include "color.h"
 # include "libft.h"

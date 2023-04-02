@@ -6,16 +6,16 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:19:29 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/03/28 17:23:19 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:38:55 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strldup(const char *str, int n)
+char	*ft_strldup(const char *str, int n)
 {
 	char	*tmp;
-	int 	size;
+	int		size;
 
 	size = ft_strlen(str);
 	if (size < n)

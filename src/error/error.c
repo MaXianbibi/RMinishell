@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:02:29 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/31 19:23:48 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 10:43:52 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	print_error(int code_error)
 		printf("ERROR : %s\n", M_CMD_NOT_FOUND);
 	else if (code_error == NOT_ENOUGH_ARG)
 		printf("ERROR : %s\n", M_NOT_ENOUGH_ARG);
+	else if (code_error == UNKNOW_OP)
+		printf("ERROR : %s\n", UNKNOW_OPERATOR);
 	if (g_global.error)
 		printf("\t%s%s\n", URED, g_global.error);
 	printf("%s", RESET);

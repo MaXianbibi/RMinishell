@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/31 20:13:47 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:26:03 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,12 @@ void	freehead(void)
 	while (tmp)
 	{
 		head = head->next;
-		if (tmp->token != BUILTIN)
-			ft_free(tmp->identifier);
-		ft_free(tmp);
+		if (tmp->token != BUILTIN && tmp->identifier)
+		{
+			free(tmp->identifier);
+			tmp->identifier = NULL;
+		}
+		ft_free((void **)&tmp);
 		tmp = head;
 	}
 	if (g_global.cmd)

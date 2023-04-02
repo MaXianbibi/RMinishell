@@ -6,11 +6,27 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:40:45 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/31 19:09:27 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:14:42 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+static void	free_env(void)
+{
+	t_env	*tmp;
+	t_env	*head;
+
+	head = g_global.head_env;
+	tmp = head;
+	while (tmp)
+	{
+		head = head->next;
+		ft_free((void **)&tmp->str);
+		ft_free((void **)&tmp);
+		tmp = head;
+	}
+}
 
 t_lexer	*ft_exit(t_lexer *tmp)
 {
@@ -20,6 +36,9 @@ t_lexer	*ft_exit(t_lexer *tmp)
 	if (tmp)
 		n = ft_atoi(tmp->identifier);
 	freehead();
-	free(g_global.last_cmd.str);
+	if (g_global.last_cmd->str)
+		free(g_global.last_cmd->str);
+	free_env();
+	free(g_global.last_cmd);
 	exit(n);
 }

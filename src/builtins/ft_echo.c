@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:27:14 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/04/02 09:58:48 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:21:45 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ t_lexer	*ft_echo(t_lexer *tmp)
 			tmp = tmp->next;
 		}
 	}
-	else
-		tmp = tmp->next;
 	printf("%c", n);
 	return (0);
 }

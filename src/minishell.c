@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/31 19:55:48 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:33:10 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ static void	data_init(char **env)
 	ft_memset(&g_global, 0, sizeof(g_global));
 	g_global.terminal = open("/dev/tty", O_RDONLY);
 	g_global.std_out = dup(STDOUT_FILENO);
-	g_global.last_cmd.str = ft_strdup("0");
+	g_global.last_cmd = ft_calloc(sizeof(t_env), 1);
+	g_global.last_cmd->str = ft_strdup("0");
 	if (env)
 		g_global.env = env;
 	init_list_env();
