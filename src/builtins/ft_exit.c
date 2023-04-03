@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:40:45 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/04/02 14:14:42 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 16:15:03 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_lexer	*ft_exit(t_lexer *tmp)
 	int	n;
 
 	n = 0;
-	if (tmp)
-		n = ft_atoi(tmp->identifier);
+	if (tmp && tmp->next)
+		n = ft_atoi(tmp->next->identifier);
 	freehead();
 	if (g_global.last_cmd->str)
 		free(g_global.last_cmd->str);

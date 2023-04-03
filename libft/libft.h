@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 15:50:08 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/04/02 14:36:24 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:02:28 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <stdarg.h>
 
 # define BUFFER_SIZE 1
 

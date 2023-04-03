@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:35:07 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/04/02 14:38:18 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:00:36 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 char	*get_next_line(int fd)
 {
 	fd = 0;
-	printf("hello world !\n");
+	ft_putstr_fd("hello world !\n", 2);
 	return (NULL);
 }

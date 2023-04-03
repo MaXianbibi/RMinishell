@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:55:13 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/04/02 11:06:49 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:09:05 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,26 @@ static char	*parsing_export(const char *str)
 		return (tmp);
 	}
 	tmp = calloc(ft_strlen(str) + 2, 1);
-	tmp[ft_strlcpy(tmp, str, 1024)] = '=';
+	tmp[ft_strlcpy(tmp, str, 8192)] = '=';
 	return (tmp);
 }
 
 t_env	*check_list(const char *str)
 {
 	t_env	*tmp;
-	char	cstr[1024];
+	char	cstr[8192];
 	int		i;
 
-	if (!str || !str[0])
+	if (!str || !str[0] || ft_strlen(str) >= 8192)
 		return (NULL);
 	if (str[0] == '?')
 		return (g_global.last_cmd);
-	ft_memset(cstr, 0, 1024);
+	ft_memset(cstr, 0, 8192);
 	i = ft_find_index(str, '=');
 	if (i)
 		ft_strlcpy(cstr, str, i + 1);
 	else
-		ft_strlcpy(cstr, str, 1024);
+		ft_strlcpy(cstr, str, 8192);
 	i = ft_strlen(cstr);
 	tmp = g_global.head_env;
 	while (tmp)

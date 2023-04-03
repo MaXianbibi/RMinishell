@@ -7,19 +7,19 @@ RM = @rm -f
 INCLUDE = -I include/ -I lib/
 
 SRC_DIR = src/
-SRC_FILES = $(wildcard $(SRC_DIR)*.c)
+SRC_FILES = minishell.c
 
 BUILTINS_DIR = src/builtins/
-BUILTINS_FILES = $(wildcard $(BUILTINS_DIR)*.c)
+BUILTINS_FILES = ft_cd.c ft_echo.c ft_env.c ft_exit.c ft_export.c ft_pwd.c ft_unset.c
 
 ERROR_DIR = src/error/
-ERROR_FILES = $(wildcard $(ERROR_DIR)*.c)
+ERROR_FILES = error.c
 
 EXECUTE_DIR = src/execute/
-EXECUTE_FILES = $(wildcard $(EXECUTE_DIR)*.c)
+EXECUTE_FILES = execute.c ft_norm_execute.c ft_redirection_in.c ft_redirection_out.c
 
 PARSING_DIR = src/parsing/
-PARSING_FILES = $(wildcard $(PARSING_DIR)*.c)
+PARSING_FILES = double_quotes.c env_var.c find_cmd.c ft_convert_env.c lexer.c operator.c other.c parser.c parsing_norm.c quotes.c
 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(notdir $(SRC_FILES:.c=.o) $(notdir $(BUILTINS_FILES:.c=.o)) $(notdir $(ERROR_FILES:.c=.o)) $(notdir $(EXECUTE_FILES:.c=.o)) $(notdir $(PARSING_FILES:.c=.o))))

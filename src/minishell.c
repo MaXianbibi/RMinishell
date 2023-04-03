@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:44:24 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/04/02 14:33:10 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/02 16:14:29 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	signal(SIGINT, signal_handler);
 	signal(SIGTSTP, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 	data_init(env);
 	while (1)
 	{
