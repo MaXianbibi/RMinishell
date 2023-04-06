@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:27:14 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/04/05 19:19:55 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/04/05 21:13:05 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,29 @@ static int	check_n(char *str)
 	return (0);
 }
 
+static void	print_word(t_lexer *tmp, int fd)
+{
+	if (tmp->identifier[0])
+	{
+		ft_putstr_fd(tmp->identifier, fd);
+		if (tmp->next && tmp->next->token != OPERATOR)
+			ft_putstr_fd(" ", fd);
+	}
+}
+
+static int	fd_out(void)
+{
+	if (*g_global.pipe_tab)
+		return (STDOUT_FILENO);
+	return (g_global.fd_out);
+}
+
 t_lexer	*ft_echo(t_lexer *tmp)
 {
 	char	n;
+	int		fd;
 
+	fd = fd_out();
 	n = '\n';
 	if (checkarg())
 		return (0);
@@ -43,15 +62,10 @@ t_lexer	*ft_echo(t_lexer *tmp)
 		}
 		while (tmp && tmp->token != OPERATOR)
 		{
-			if (tmp->identifier[0])
-			{
-				ft_putstr_fd(tmp->identifier, g_global.fd_out);
-				if (tmp->next && tmp->next->token != OPERATOR)
-					ft_putstr_fd(" ", g_global.fd_out);
-			}
+			print_word(tmp, fd);
 			tmp = tmp->next;
 		}
 	}
-	ft_putchar_fd(n, g_global.fd_out);
+	ft_putchar_fd(n, fd);
 	return (0);
 }

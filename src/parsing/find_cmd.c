@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:28:48 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/03/31 20:11:47 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/05 21:12:53 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 char	*find_path_line(char **envp)
 {
-	int	i;
+	t_env	*tmp;
 
-	i = 0;
-	while (envp[i])
-	{
-		if (ft_strnstr(envp[i], "PATH=", 5) != 0)
-			return (envp[i] + 5);
-		i++;
-	}
-	return (NULL);
+	(void)envp;
+	tmp = check_list("PATH");
+	if (tmp)
+		return (tmp->str + 5);
+	else
+		return (NULL);
 }
 
 static char	*find_path(char **path, char *cmd)

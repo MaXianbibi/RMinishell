@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
+/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:55:13 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/04/03 15:59:04 by justinmorne      ###   ########.fr       */
+/*   Updated: 2023/04/05 20:11:48 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,24 @@ t_env	*check_list(const char *str)
 	return (NULL);
 }
 
-static int filter_export(char *str)
+static int	filter_export(char *str)
 {
-    if (ft_isalpha(str[0]) || str[0] == '_')
-        return (1);
-    ft_putstr_fd("export: not an identifier: ", 2);
-    ft_putendl_fd(str, 2);
-    return (0);
+	if (ft_isalpha(str[0]) || str[0] == '_')
+		return (1);
+	ft_putstr_fd("export: not an identifier: ", 2);
+	ft_putendl_fd(str, 2);
+	return (0);
 }
 
-static int	norminette(t_lexer *tmp)
+static int	norminette(t_lexer *tmp, t_env *env)
 {
-	t_env	*env;
-
-	tmp = tmp->next;
 	while (tmp && tmp->token != OPERATOR)
 	{
 		env = check_list(tmp->identifier);
 		if (!env)
 		{
 			if (filter_export(tmp->identifier))
-			{	
+			{
 				env = (t_env *)creat_new_node();
 				env->str = parsing_export(tmp->identifier);
 				insert_at_head((t_lexer **)&g_global.head_env, (t_lexer *)env);
@@ -83,7 +80,7 @@ static int	norminette(t_lexer *tmp)
 		{
 			if (ft_find_index(tmp->identifier,
 					'=') == (ft_strlen(tmp->identifier) - 1)
-				|| ft_find_index(tmp->identifier, '=') == 0)
+				|| !ft_find_index(tmp->identifier, '='))
 				return (0);
 			free(env->str);
 			env->str = strdup(tmp->identifier);
@@ -95,9 +92,15 @@ static int	norminette(t_lexer *tmp)
 
 t_lexer	*ft_export(t_lexer *tmp)
 {
+	t_env	*env;
+
 	if (!tmp->next || tmp->next->token == OPERATOR)
 		tmp = ft_env(tmp);
 	else
-		norminette(tmp);
+	{
+		env = NULL;
+		tmp = tmp->next;
+		norminette(tmp, env);
+	}
 	return (0);
 }

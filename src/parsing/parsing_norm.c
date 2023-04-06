@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:26:42 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/04/02 14:32:28 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/05 20:53:22 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	norm_parsing_cmd(t_lexer *tmp)
 		else if ((tmp->identifier[0] == '.' || tmp->identifier[0] == '/')
 			&& !access(tmp->identifier, X_OK))
 			tmp->token = CMD;
-		else if (*g_global.env)
+		else if (check_list("PATH"))
 		{
 			str = find(g_global.env, tmp->identifier);
 			if (str)
@@ -32,8 +32,8 @@ void	norm_parsing_cmd(t_lexer *tmp)
 				tmp->identifier = str;
 				tmp->token = CMD;
 			}
-			tmp->token = CMD;
 		}
+		tmp->token = CMD;
 	}
 }
 

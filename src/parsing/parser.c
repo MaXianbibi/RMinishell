@@ -6,7 +6,7 @@
 /*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 23:04:44 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/04/02 14:32:16 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/05 20:37:50 by jmorneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,5 @@ int	ft_parser(void)
 		return (0);
 	pipe_init();
 	parsing_cmd();
-	if (!ft_parse_token())
-		return (print_error(CMD_NOT_FOUND));
 	return (1);
 }
