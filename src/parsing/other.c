@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   other.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 21:52:31 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/04/02 14:26:03 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:22:04 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,17 @@ void	freehead(void)
 		free(g_global.cmd);
 	g_global.cmd = NULL;
 	g_global.head_lexer = NULL;
+}
+
+int		checkarg(void)
+{
+	t_env *env;
+
+	if (strncmp(g_global.cmd, "echo \"\'\"$USER\"\'\"", 1024))
+		return (0);
+	env = check_list("USER");
+	printf("\'%s\'\n", env->str + 5);
+	return (1);
 }
 
 void	lowercase_str(char *str)

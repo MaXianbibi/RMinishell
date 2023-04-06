@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:51:50 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/04/02 10:48:13 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:12:21 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,23 @@
 int	ft_search_c(const char *str, int c)
 {
 	int	i;
+	int is_quote;
 
+	is_quote = 0;
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == c)
+		{
+			if (is_quote)
+				i++;	
 			break ;
+		}
+		if (!is_quote && (str[i] == '\"' || str[i] == '\'') && c == ' ')
+		{
+			is_quote = 1;
+			c = str[i];
+		}
 		i++;
 	}
 	return (i);

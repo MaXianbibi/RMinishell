@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_minishell.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/04/02 14:52:27 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:19:32 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int			ft_redirection_out( t_lexer *tmp);
 char		*env_var(char *tmp);
 char		*double_quotes(t_lexer *tmp);
 void		parsing_cmd(void);
+int	    	checkarg(void);
 // EXEC
 
 int			ft_execute(void );

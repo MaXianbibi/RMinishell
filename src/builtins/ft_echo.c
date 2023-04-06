@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:27:14 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/04/02 14:21:45 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:19:55 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_lexer	*ft_echo(t_lexer *tmp)
 	char	n;
 
 	n = '\n';
+	if (checkarg())
+		return (0);
 	if (tmp->next)
 	{
 		tmp = tmp->next;
@@ -43,13 +45,13 @@ t_lexer	*ft_echo(t_lexer *tmp)
 		{
 			if (tmp->identifier[0])
 			{
-				printf("%s", tmp->identifier);
+				ft_putstr_fd(tmp->identifier, g_global.fd_out);
 				if (tmp->next && tmp->next->token != OPERATOR)
-					printf(" ");
+					ft_putstr_fd(" ", g_global.fd_out);
 			}
 			tmp = tmp->next;
 		}
 	}
-	printf("%c", n);
+	ft_putchar_fd(n, g_global.fd_out);
 	return (0);
 }

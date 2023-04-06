@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   double_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 08:01:41 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/04/02 09:19:03 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:56:55 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

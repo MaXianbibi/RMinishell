@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:55:13 by justinmorne       #+#    #+#             */
-/*   Updated: 2023/04/02 15:09:05 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/03 15:59:04 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,15 @@ t_env	*check_list(const char *str)
 	return (NULL);
 }
 
+static int filter_export(char *str)
+{
+    if (ft_isalpha(str[0]) || str[0] == '_')
+        return (1);
+    ft_putstr_fd("export: not an identifier: ", 2);
+    ft_putendl_fd(str, 2);
+    return (0);
+}
+
 static int	norminette(t_lexer *tmp)
 {
 	t_env	*env;
@@ -63,9 +72,12 @@ static int	norminette(t_lexer *tmp)
 		env = check_list(tmp->identifier);
 		if (!env)
 		{
-			env = (t_env *)creat_new_node();
-			env->str = parsing_export(tmp->identifier);
-			insert_at_head((t_lexer **)&g_global.head_env, (t_lexer *)env);
+			if (filter_export(tmp->identifier))
+			{	
+				env = (t_env *)creat_new_node();
+				env->str = parsing_export(tmp->identifier);
+				insert_at_head((t_lexer **)&g_global.head_env, (t_lexer *)env);
+			}
 		}
 		else
 		{

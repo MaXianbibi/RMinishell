@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_minishell.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorneau <jmorneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: justinmorneau <justinmorneau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:48:31 by jmorneau          #+#    #+#             */
-/*   Updated: 2023/04/02 14:52:55 by jmorneau         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:56:37 by justinmorne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
